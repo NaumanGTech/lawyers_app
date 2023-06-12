@@ -30,7 +30,8 @@
                     <a href="{{route('front')}}">Home</a>
                 </li>
                 <li class="has-submenu">
-                    <a href="categories.html">Categories<i class="fas fa-chevron-down"></i></a>
+
+                    <a href="{{ route('categories', ['filter' => 'all']) }}">Categories<i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
                         <li><a href="provider-dashboard.html">Environmental law</a></li>
                         <li><a href="my-services.html">Real estate lawyer</a></li>
@@ -58,10 +59,10 @@
                     </ul>
                 </li>
                 <li class="has-submenu">
-                    <a href="#">Consult Online<i class="fas fa-chevron-down"></i></a>
+                    <a href="{{route('lawyers.online', ['filter'=> 'all'])}}">Consult Online<i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
                         <li><a href="#">Chat</a></li>
-                        <li><a href="#">Find Online Lawyers</a></li>
+                        <li><a href="{{route('lawyers.online', ['filter'=> 'online'])}}">Find Online Lawyers</a></li>
                     </ul>
                 </li>
                 {{-- <li class="has-submenu">

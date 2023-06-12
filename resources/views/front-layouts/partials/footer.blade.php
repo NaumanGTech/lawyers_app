@@ -31,16 +31,13 @@
                         <h2 class="footer-title">Categories</h2>
                         <ul>
                             <li>
-                                <a href="search.html">Computer</a>
+                                <a href="search.html">See all Categories</a>
                             </li>
+                        </ul>
+                        <h2 class="footer-title mt-5">Locations</h2>
+                        <ul>
                             <li>
-                                <a href="search.html">Interior</a>
-                            </li>
-                            <li>
-                                <a href="search.html">Car Wash</a>
-                            </li>
-                            <li>
-                                <a href="search.html">Cleaning</a>
+                                <a href="search.html">See all Locations</a>
                             </li>
                         </ul>
                     </div>

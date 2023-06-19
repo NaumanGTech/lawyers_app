@@ -1,5 +1,5 @@
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{asset('front')}}/assets/img/favicon.png">
+{{-- <link rel="shortcut icon" href="{{asset('front')}}/assets/img/favicon.png"> --}}
 
 <link href="{{asset('front')}}/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 

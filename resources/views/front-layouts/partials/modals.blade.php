@@ -15,6 +15,7 @@
                 <!-- Register Form -->
                 <form method="POST" action="{{ route('lawyer.register') }}">
                     @csrf
+
                     <div class="form-group form-focus">
                         <label class="focus-label">Name</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
@@ -37,7 +38,7 @@
                     </div>
                     <div class="form-group form-focus">
                         <label class="focus-label">Mobile Number</label>
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone"
+                        <input type="number" class="form-control @error('phone') is-invalid @enderror" name="phone"
                             value="{{ old('phone') }}" required placeholder="986 452 1236">
                         @error('phone')
                             <span class="invalid-feedback" role="alert">
@@ -56,9 +57,9 @@
                         @enderror
                     </div>
                     <div class="form-group form-focus">
-                        <label class="focus-label">Mobile Number</label>
+                        <label class="focus-label">Conform password</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                            required autocomplete="new-password" placeholder="986 452 1236">
+                            required autocomplete="new-password" placeholder="Conform password">
                     </div>
                     <div class="text-end">
                         <a class="nav-link header-login" href="javascript:void(0);" data-bs-toggle="modal"
@@ -90,7 +91,7 @@
                 </div>
 
                 <!-- Register Form -->
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('customer.register') }}">
                     @csrf
                     <div class="form-group form-focus">
                         <label class="focus-label">Name</label>
@@ -114,7 +115,7 @@
                     </div>
                     <div class="form-group form-focus">
                         <label class="focus-label">Mobile Number</label>
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                        <input type="number" class="form-control @error('phone') is-invalid @enderror"
                             name="phone" value="{{ old('phone') }}" required placeholder="986 452 1236">
                         @error('phone')
                             <span class="invalid-feedback" role="alert">
@@ -133,10 +134,10 @@
                         @enderror
                     </div>
                     <div class="form-group form-focus">
-                        <label class="focus-label">Mobile Number</label>
+                        <label class="focus-label">Conform password</label>
                         <input id="password-confirm" type="password" class="form-control"
                             name="password_confirmation" required autocomplete="new-password"
-                            placeholder="986 452 1236">
+                            placeholder="Conform password">
                     </div>
                     <div class="text-end">
                         <a class="nav-link header-login" href="javascript:void(0);" data-bs-toggle="modal"

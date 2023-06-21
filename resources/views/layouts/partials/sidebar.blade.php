@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
     <div class="sidebar-logo">
-        <a href="{{route('home')}}" class="text-black">
+        <a href="{{ route('home') }}" class="text-black">
             Admin Dashboard
         </a>
     </div>
@@ -9,7 +9,10 @@
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
                 <li class="active">
-                    <a href="{{route('home')}}"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
+                    <a href="{{ route('home') }}"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
+                </li>
+                <li class="active">
+                    <a href="{{ route('all.users') }}"><i class="fas fa-columns"></i> <span>All Users</span></a>
                 </li>
                 {{-- <li>
                     <a href="categories.html"><i class="fas fa-layer-group"></i> <span>Categories</span></a>

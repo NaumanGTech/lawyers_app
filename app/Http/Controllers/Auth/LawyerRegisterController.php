@@ -42,7 +42,7 @@ class LawyerRegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone'=> 'required',
+            'phone' => 'required',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -57,13 +57,14 @@ class LawyerRegisterController extends Controller
     {
         $user =  User::create([
             'name' => $request['name'],
-            'phone'=> $request['phone'],
+            'phone' => $request['phone'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
             'role' => 'lawyer',
         ]);
         // $user->assignRole('lawyer');
 
-        return $user;
+        // return $user;
+        return back();
     }
 }

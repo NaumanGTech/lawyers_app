@@ -1,5 +1,5 @@
-{{-- @extends('front-layouts.master-layout')
-@section('content') --}}
+@extends('front-layouts.master-user-layout')
+@section('content')
     <div class="col-xl-9 col-md-8">
         <div class="row">
             <div class="col-lg-4">
@@ -28,4 +28,4 @@
             </div>
         </div>
     </div>
-{{-- @endsection --}}
+@endsection

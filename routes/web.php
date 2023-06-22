@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\CustomerRegisterController;
 use App\Http\Controllers\Auth\LawyerRegisterController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\UsersLoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontController;
@@ -25,7 +25,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontController::class, 'index'])->name('front');
 Route::post('lawyer/signup', [LawyerRegisterController::class, 'create'])->name('lawyer.register');
 Route::post('customer/signup', [CustomerRegisterController::class, 'create'])->name('customer.register');
-Route::post('/admin/login', [DashboardController::class, 'admin_login'])->name('admin.login');
+// Route::post('/admin/login', [DashboardController::class, 'admin_login'])->name('admin.login');
+Route::post('user/login', [UsersLoginController::class, 'login'])->name('users.login');
 
 Route::get('/categories/{filter}', [FrontController::class, 'categories'])->name('categories');
 Route::get('/lawyers/{category}', [FrontController::class, 'lawyers_with_category'])->name('lawyers.with.category');
@@ -39,13 +40,25 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/all-users', [DashboardController::class, 'allUsers'])->name('all.users');
+});
+
+Route::group(['middleware' => 'lawyer'], function(){
+    Route::group(['prefix' => 'lawyer'], function(){
+        Route::get('/dashboard', [LawyerController::class, 'index'])->name('lawyer.dashboard');
+    });
+});
+
+Route::group(['middleware' => 'customer'], function(){
+    Route::group(['prefix' => 'customer'], function(){
+        Route::get('/dashboard', [CustomerController::class, 'index'])->name('customer.dashboard');
+    });
 });
 
 
 // ADMIN PART
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-Route::get('/all-users', [DashboardController::class, 'allUsers'])->name('all.users');
+// Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 Route::get('/category/index', [DashboardController::class, 'category_index'])->name('category.index');
 Route::get('/category/form/{id}', [DashboardController::class, 'category_form'])->name('category.form');

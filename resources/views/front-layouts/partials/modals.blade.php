@@ -168,7 +168,7 @@
                 <div class="login-header">
                     <h3>Login <span>Lawyers App</span></h3>
                 </div>
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('users.login') }}">
                     @csrf
                     <div class="form-group form-focus">
                         <label class="focus-label">Email</label>

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class UsersLoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -46,10 +46,14 @@ class LoginController extends Controller
         // if($user > 0){
         //     return redirect()->back()->withErrors('Your account is blocked, please check your email for details.');
         // }
-        $credentials = ['email' => $request->email, 'password' => $request->password, 'role' => 'admin'];
+        $credentials = ['email' => $request->email, 'password' => $request->password];
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            return redirect()->route('admin.dashboard');
+            if ($user->role == 'lawyer') {
+                return redirect()->route('lawyer.dashboard');
+            } else if ($user->role == 'user') {
+                return redirect()->route('customer.dashboard');
+            }
         } else {
             return redirect()->back()->withErrors('You have entered an invalid email/password, Please try again');
         }

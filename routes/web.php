@@ -42,9 +42,22 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
+
+// ADMIN PART
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/all-users', [DashboardController::class, 'allUsers'])->name('all.users');
 
+Route::get('/category/index', [DashboardController::class, 'category_index'])->name('category.index');
+Route::get('/category/form/{id}', [DashboardController::class, 'category_form'])->name('category.form');
+Route::post('/category/store/{id}', [DashboardController::class, 'category_store'])->name('category.store');
+Route::get('/category/detail/{id}', [DashboardController::class, 'category_detail'])->name('category.details');
+Route::post('/category/delete/{id}', [DashboardController::class, 'category_delete'])->name('category.delete');
+
+Route::get('/service/index', [DashboardController::class, 'service_index'])->name('service.index');
+Route::get('/service/form/{id}', [DashboardController::class, 'service_form'])->name('service.form');
+Route::post('/service/store/{id}', [DashboardController::class, 'service_store'])->name('service.store');
+Route::get('/service/detail/{id}', [DashboardController::class, 'service_detail'])->name('service.details');
+Route::post('/service/delete/{id}', [DashboardController::class, 'service_delete'])->name('service.delete');
 
 
 Route::get('/lawyer/dashboard', [LawyerController::class, 'index'])->name('lawyer.dashboard');

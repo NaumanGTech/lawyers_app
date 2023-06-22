@@ -16,3 +16,5 @@
 
 
 @yield('injected-css')
+
+<link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">

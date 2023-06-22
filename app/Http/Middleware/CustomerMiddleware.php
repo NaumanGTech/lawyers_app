@@ -19,10 +19,11 @@ class CustomerMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && auth()->user()->role == 'user') {
+        if (Auth::user()->role == 'user') {
+
             return $next($request);
+        } else {
+            return redirect('/login');
         }
-        return redirect('/');
     }
 }
-

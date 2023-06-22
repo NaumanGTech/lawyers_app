@@ -12,4 +12,9 @@ class Service extends Model
         'image',
         'title'
     ];
+
+    public function getImageAttribute()
+    {
+        return asset('uploads/user') . '/' . $this->attributes['image'];
+    }
 }

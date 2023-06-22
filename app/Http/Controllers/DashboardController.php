@@ -42,7 +42,7 @@ class DashboardController extends Controller
     //  CATEGORY
     public function category_index()
     {
-
+        $obj = Category::get();
         return view('layouts.pages.category.index', get_defined_vars());
     }
     public function category_form($id)
@@ -50,7 +50,7 @@ class DashboardController extends Controller
         $title = 'New Category';
         $obj = array();
         if (isset($id) && !empty($id)) {
-            $obj = Category::whereId($id)->with('Categories')->first();
+            $obj = Category::whereId($id)->first();
         }
 
         return view('layouts.pages.category.create', get_defined_vars());
@@ -58,22 +58,29 @@ class DashboardController extends Controller
 
     public function category_store(Request $req, $id)
     {
-
+        $imageUpdateId = $id;
         if (isset($id) && !empty($id)) {
             $obj = Category::whereId($id)->update([
                 'title' => $req->title,
             ]);
 
-            return redirect(route('company.jobPost'));
+            return redirect(route('category.index'));
         } else {
             //Create
             $obj = Category::create([
                 'title' => $req->title,
 
             ]);
-
-            return redirect(route('company.jobPost'));
+            $imageUpdateId = $obj->id;
         }
+        if ($req->file()) {
+            $imageName = time() . '.' . $req->image->extension();
+            $req->image->move(public_path('uploads/user'), $imageName);
+            Category::whereId($imageUpdateId)->update([
+                'image' => $imageName
+            ]);
+        }
+        return redirect(route('category.index'));
     }
 
     public function category_detail($id)
@@ -105,7 +112,7 @@ class DashboardController extends Controller
     //  Services
     public function service_index()
     {
-
+        $obj = Service::get();
         return view('layouts.pages.service.index', get_defined_vars());
     }
     public function service_form($id)
@@ -113,7 +120,7 @@ class DashboardController extends Controller
         $title = 'New service';
         $obj = array();
         if (isset($id) && !empty($id)) {
-            $obj = Service::whereId($id)->with('Categories')->first();
+            $obj = Service::whereId($id)->first();
         }
 
         return view('layouts.pages.service.create', get_defined_vars());
@@ -122,21 +129,29 @@ class DashboardController extends Controller
     public function service_store(Request $req, $id)
     {
 
+        $imageUpdateId = $id;
         if (isset($id) && !empty($id)) {
             $obj = Service::whereId($id)->update([
                 'title' => $req->title,
             ]);
 
-            return redirect(route('company.jobPost'));
+            return redirect(route('service.index'));
         } else {
             //Create
             $obj = Service::create([
                 'title' => $req->title,
 
             ]);
-
-            return redirect(route('company.jobPost'));
+            $imageUpdateId = $obj->id;
         }
+        if ($req->file()) {
+            $imageName = time() . '.' . $req->image->extension();
+            $req->image->move(public_path('uploads/user'), $imageName);
+            Service::whereId($imageUpdateId)->update([
+                'image' => $imageName
+            ]);
+        }
+        return redirect(route('service.index'));
     }
 
     public function service_detail($id)

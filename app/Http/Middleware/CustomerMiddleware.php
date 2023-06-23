@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
@@ -19,6 +20,9 @@ class CustomerMiddleware
      */
     public function handle($request, Closure $next)
     {
+
+        $user_id = auth()->user()->id;
+        $user = User::where('id', $user_id)->first();
         if (Auth::user()->role == 'user') {
             return $next($request);
         } else if ((Auth::user()->role !== 'user')) {

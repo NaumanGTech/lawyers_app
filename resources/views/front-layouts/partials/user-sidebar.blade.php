@@ -1,9 +1,10 @@
 <div class="col-xl-3 col-md-4">
     <div class="mb-4">
         <div class="d-sm-flex flex-row flex-wrap text-center text-sm-start align-items-center">
-            <img alt="profile image" src="assets/img/customer/user-01.jpg" class="avatar-lg rounded-circle">
+            <img alt="profile image" src="{{ asset('front') }}/assets/img/customer/user-01.jpg"
+                class="avatar-lg rounded-circle">
             <div class="ms-sm-3 ms-md-0 ms-lg-3 mt-2 mt-sm-0 mt-md-2 mt-lg-0">
-                <h6 class="mb-0">Jeffrey Akridge</h6>
+                <h6 class="mb-0">{{ auth()->user()->name }}</h6>
                 <p class="text-muted mb-0">Member Since Apr 2020</p>
             </div>
         </div>
@@ -16,6 +17,11 @@
                 </a>
             </li>
             <li class="nav-item current">
+                <a href="{{ route('lawyer.list') }}" class="nav-link">
+                    <i class="fas fa-user"></i> <span>Lawyers</span>
+                </a>
+            </li>
+            {{-- <li class="nav-item current">
                 <a href="favourites.html" class="nav-link">
                     <i class="fas fa-heart"></i> <span>Favourites</span>
                 </a>
@@ -44,7 +50,7 @@
                 <a href="user-payment.html" class="nav-link">
                     <i class="fas fa-hashtag"></i> <span>Payment</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </div>

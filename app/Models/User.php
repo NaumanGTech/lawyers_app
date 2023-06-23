@@ -46,6 +46,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function getImageAttribute()
+    {
+        return asset('uploads/user') . '/' . $this->attributes['image'];
+    }
+
     public function isCustomer()
     {
         return $this->role === 'user';

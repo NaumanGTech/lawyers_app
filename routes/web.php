@@ -72,6 +72,10 @@ Route::middleware(['auth', 'lawyer'])->group(function () {
 // CUSTOMER PART
 Route::middleware(['auth', 'customer'])->group(function () {
     Route::get('/customer/dashboard', [CustomerController::class, 'index'])->name('customer.dashboard');
+
+    // LAwyers
+    Route::get('lawyer/list', [CustomerController::class, 'lawyer_list'])->name('lawyer.list');
+    Route::get('lawyer/profile/{id}', [CustomerController::class, 'lawyer_profile'])->name('lawyer.profile');
 });
 
 

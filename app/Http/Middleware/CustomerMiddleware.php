@@ -20,8 +20,9 @@ class CustomerMiddleware
     public function handle($request, Closure $next)
     {
         if (Auth::user()->role == 'user') {
-
             return $next($request);
+        } else if ((Auth::user()->role !== 'user')) {
+            return redirect()->back()->with('error', 'You do not have access of this page');
         } else {
             return redirect('/login');
         }

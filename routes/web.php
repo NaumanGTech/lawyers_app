@@ -65,6 +65,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 // LAWYER PART
 Route::middleware(['auth', 'lawyer'])->group(function () {
     Route::get('/lawyer/dashboard', [LawyerController::class, 'index'])->name('lawyer.dashboard');
+    Route::get('/lawyer/documents/verification', [LawyerController::class, 'document_submission'])->name('lawyer.document.verification');
+    Route::post('/lawyer/documents/submit', [LawyerController::class, 'submit_documents'])->name('lawyer.documents.submit');
 });
 
 // CUSTOMER PART

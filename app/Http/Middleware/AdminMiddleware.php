@@ -20,9 +20,9 @@ class AdminMiddleware
         $user_id = auth()->user()->id;
         $user = User::where('id', $user_id)->first();
         if (Auth::user()->role == 'admin') {
-
-
             return $next($request);
+        } else if ((Auth::user()->role !== 'admin')) {
+            return redirect()->back()->with('error', 'You do not have access of this page');
         } else {
             return redirect('/login');
         }

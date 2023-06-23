@@ -1990,7 +1990,7 @@ html.menu-opened body {
 .cities_button .btn a:hover {
     color: white;
 }
-.OnlineLawyersRatings span{
+.OnlineLawyersRatings span {
     color: yellow;
 }
 /*-----------------
@@ -5969,14 +5969,15 @@ html.menu-opened body {
     margin-bottom: 0;
     font-weight: 600;
     position: relative;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
+    margin-bottom: 3px;
     letter-spacing: 1px;
     color: #242133;
 }
 .section-header h2::after {
     content: "";
     display: block;
-    width: 100px;
+    width: 62%;
     height: 4px;
     background: #1a1919;
     margin: 0 auto;

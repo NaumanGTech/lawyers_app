@@ -13,7 +13,9 @@
             <div class="container">
                 <div class="row">
                     @include('front-layouts.partials.lawyer-sidebar')
-                    @yield('content')
+                    <div class="col-xl-9 col-md-8">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
         </div>

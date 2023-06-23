@@ -21,6 +21,10 @@ return new class extends Migration
             $table->integer('phone')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->tinyInteger('is_document_submit')->default(0)->nullable();
+            $table->string('degree')->nullable();
+            $table->string('certificate1')->nullable();
+            $table->string('certificate2')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

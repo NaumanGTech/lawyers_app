@@ -3,10 +3,10 @@
 use App\Http\Controllers\Auth\CustomerRegisterController;
 use App\Http\Controllers\Auth\LawyerRegisterController;
 use App\Http\Controllers\Auth\UsersLoginController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\FrontController;
-use App\Http\Controllers\LawyerController;
+use App\Http\Controllers\Lawyer\LawyerController;
 use App\Http\Controllers\PusherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +67,8 @@ Route::middleware(['auth', 'lawyer'])->group(function () {
     Route::get('/lawyer/dashboard', [LawyerController::class, 'index'])->name('lawyer.dashboard');
     Route::get('/lawyer/documents/verification', [LawyerController::class, 'document_submission'])->name('lawyer.document.verification');
     Route::post('/lawyer/documents/submit', [LawyerController::class, 'submit_documents'])->name('lawyer.documents.submit');
+
+    Route::get('/lawyer/profile/setting', [LawyerController::class, 'profile_setting'])->name('lawyer.profile.setting');
 });
 
 // CUSTOMER PART

@@ -21,42 +21,46 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('front') }}/assets/css/style.css">
 
+    <link rel="stylesheet" href="{{ asset('front') }}/assets/plugins/dist/css/bs-dropzone.css" />
     <style>
+        .dropify-wrapper {
+            height: 180px !important;
+            border: 4px solid black !important;
+            color: black !important;
+        }
+
         .preview-image {
             display: inline-block;
             width: 100px;
-            /* Adjust the width as per your requirements */
             height: 100px;
-            /* Adjust the height as per your requirements */
             margin-right: 10px;
-            /* Adjust the spacing between images as per your requirements */
         }
 
-        /* Reduce the font size of the default text */
+        .dropify-wrapper .dropify-message span.file-icon {
+            font-size: 30px !important;
+        }
         .dropify-infos-message {
-            font-size: 5px !important;
+            font-size: 15px !important;
         }
-
-        /* Make the remove button, error message, and replace button visible */
         .dropify-wrapper .dropify-clear {
             display: block;
             color: black !important;
         }
-
         .dropify-wrapper .dropify-error {
             display: block;
             color: black !important;
         }
-
         .dropify-wrapper .dropify-replace {
             display: block;
             color: black !important;
+        }
+        .bs-dropzone{
+            border: 4px solid black !important;
         }
     </style>
 </head>
 
 <body>
-
     <div class="main-wrapper">
 
         <!-- Header -->
@@ -94,23 +98,38 @@
         </header>
         <!-- /Header -->
 
-        <div class="content">
-            <div class="container">
+        <div class="content" style="background-color: darkgray;">
+            <div class="container m-0">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div class="section-header text-center">
                             <h2>Please Add The Required Documents</h2>
-                            <p>After that you can start providing your services</p>
+                            <p><b> After that you can start providing your services </b></p>
                         </div>
                         <form method="POST" action="{{ route('lawyer.documents.submit') }}"
                             enctype="multipart/form-data">
+                            @csrf
                             <div class="row">
+                                <div class="col-6 mb-4">
+                                    <label for="degree" class="text-light"><b>Upload Your Law Degree Here</b></label>
+                                    <input type="file" name="degree" class="degree-dropify"
+                                        data-default-file="{{ asset('front') }}/assets/img/document.png">
+                                </div>
+                                <div class="col-6 d-flex justify-content-end">
+                                    <img class="w-75" src="{{ asset('front') }}/assets/img/graduation.jpg"
+                                        alt="Court Scale">
+                                </div>
                                 <div class="col-12">
-                                    <input type="file" name="images[]" class="dropify" multiple>
+                                    <div class="form-group">
+                                        <label for="images[]" class="text-light"><b>Upload Your Awards and Certificates</b></label>
+                                        <input type="file" name="images[]" id="demo-4" multiple />
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <button type="reset" class="btn btn-dark">Reset</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div id="preview-images-container"></div>
-                            <div class="submit-section">
+                            <div class="submit-section text-center">
                                 <button class="btn btn-primary submit-btn" type="submit">Submit</button>
                             </div>
                         </form>
@@ -137,10 +156,20 @@
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/dropify/dist/js/dropify.min.js"></script>
 
-
+    <script src="{{ asset('front') }}/assets/plugins/dist/js/bs-dropzone.js"></script>
+    <script>
+        $("#demo-4").bs_dropzone({
+            preview: true,
+            accepted: ["jpg", "jpeg", "png", 'bmp', 'webp', 'jfif'],
+            dropzoneTemplate: '<div class="bs-dropzone"><div class="bs-dropzone-area"></div><div class="bs-dropzone-message"></div><div class="bs-dropzone-preview mt-0"></div></div>',
+            parentTemplate: '<div class="row ml-0 justify-content-center align-items-center"></div>',
+            childTemplate: '<div class="col-4 col-md-3 pl-0"></div>',
+            imageClass: "img-fluid mt-3 rounded",
+        });
+    </script>
     <script>
         $(document).ready(function() {
-            $('.dropify').dropify({
+            $('.degree-dropify').dropify({
                 messages: {
                     default: 'Upload Document',
                     replace: 'Drag and drop or click to replace',
@@ -158,9 +187,9 @@
 
     <script>
         $(document).ready(function() {
-            $('.dropify').dropify({
+            $('.images-dropify').dropify({
                 messages: {
-                    default: 'Upload Document',
+                    default: 'Upload Documents',
                     replace: 'Drag and drop or click to replace',
                     remove: 'Remove',
                     error: 'Error while uploading file',
@@ -171,19 +200,23 @@
                 },
             });
 
-            $('.dropify').on('change', function() {
+            $('.images-dropify').on('change', function() {
                 var files = $(this).get(0).files;
-                var imagesContainer = $('.dropify-wrapper').find('.dropify-preview');
+                var imagesContainer = $(this).siblings('.dropify-wrapper').find(
+                    '.dropify-preview');
 
                 imagesContainer.empty();
                 for (var i = 0; i < files.length; i++) {
                     var file = files[i];
                     var reader = new FileReader();
 
-                    reader.onload = function(e) {
-                        var img = $('<img>').addClass('preview-image').attr('src', e.target.result);
-                        imagesContainer.append(img);
-                    };
+                    reader.onload = (function(file) {
+                        return function(e) {
+                            var img = $('<img>').addClass('preview-image').attr('src', e.target
+                                .result);
+                            imagesContainer.append(img);
+                        };
+                    })(file);
 
                     reader.readAsDataURL(file);
                 }

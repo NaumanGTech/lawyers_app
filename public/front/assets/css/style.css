@@ -3941,14 +3941,8 @@ html.menu-opened body {
 .dash-widget-info {
     text-align: right;
 }
-.dash-widget.dash-bg-1 {
-    background-color: #ff0080;
-}
 .dash-widget.dash-bg-2 {
-    background-color: #323031;
-}
-.dash-widget.dash-bg-3 {
-    background-color: #d9c505;
+    background-color: black;
 }
 .pagination > ul li a:hover {
     background: white;
@@ -5461,22 +5455,30 @@ html.menu-opened body {
     border: 0;
 }
 .settings-menu ul li + li {
-    margin-top: 15px;
+    margin-top: 5px;
 }
 .settings-menu ul li a {
     color: #858585;
-    padding: 0;
-    border: 0 !important;
+    width: 100%;
+    border: 0;
+    border-radius: 6px;
+    margin: 0;
+    padding: 10px 20px;
     display: inline-block;
 }
 .settings-menu ul li a:hover,
 .settings-menu ul li a:focus {
-    background-color: transparent !important;
-    border: 0 !important;
+    background-color: darkgray !important;
+    color: black !important;
 }
 .settings-menu ul li a.active {
-    color: #1a1919 !important;
+    color: white;
+    background: black;
+    width: 100%;
     border: 0;
+    border-radius: 6px;
+    margin: 0 0px;
+    padding: 10px 20px;
 }
 .settings-menu ul li i {
     margin-right: 10px;

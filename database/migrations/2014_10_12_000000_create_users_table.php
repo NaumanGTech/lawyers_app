@@ -23,8 +23,7 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->tinyInteger('is_document_submit')->default(0)->nullable();
             $table->string('degree')->nullable();
-            $table->string('certificate1')->nullable();
-            $table->string('certificate2')->nullable();
+            $table->string('certificates')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

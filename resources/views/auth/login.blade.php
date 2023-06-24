@@ -7,14 +7,13 @@
     <title>Lawyer App | Admin Login</title>
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="{{ asset('front') }}/assets/img/favicon.png">
+    <link rel="shortcut icon" href="{{ asset('admin') }}/assets/img/favicon.png">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('front') }}/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/plugins/bootstrap/css/bootstrap.min.css">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{{ asset('front') }}/assets/css/admin.css">
-
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/admin.css">
 </head>
 
 <body>
@@ -26,7 +25,7 @@
                         <div class="account-header">
                             <div class="account-logo text-center mb-4">
                                 <a href="index.html">
-                                    <img src="assets/img/logo-icon.png" alt="" class="img-fluid">
+                                    <img src="{{asset('admin')}}/assets/img/logo-icon.png" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
@@ -93,13 +92,13 @@
     </div>
 
     <!-- jQuery -->
-    <script src="{{ asset('front') }}/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- Bootstrap Core JS -->
-    <script src="{{ asset('front') }}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JS -->
-    <script src="{{ asset('front') }}/assets/js/admin.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/admin.js"></script>
 
 </body>
 

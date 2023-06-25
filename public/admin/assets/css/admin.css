@@ -468,16 +468,28 @@ button.bg-danger:hover {
     color: #757575 !important;
 }
 .btn-primary {
-	background-color: #ff0080;
-	border: 1px solid #ff0080;
+	background-color: black;
+	border: 1px solid black;
 }
+
+.btn-light {
+    border-color: white !important;
+    color: black !important;
+    background-color: white;
+}
+.btn-light:hover,
+.btn-light:focus,
+.btn-light:active{
+    background-color: rgb(240, 233, 233) !important;
+}
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.active,
 .btn-primary:active,
 .open > .dropdown-toggle.btn-primary {
-	background-color:  #e60073;
-	border: 1px solid  #e60073;
+	background-color:  black;
+	border: 1px solid  black;
 }
 .btn-primary.active.focus,
 .btn-primary.active:focus,
@@ -488,14 +500,14 @@ button.bg-danger:hover {
 .open > .dropdown-toggle.btn-primary.focus,
 .open > .dropdown-toggle.btn-primary:focus,
 .open > .dropdown-toggle.btn-primary:hover {
-	background-color:  #e60073;
-	border: 1px solid  #e60073;
+	background-color:  black;
+	border: 1px solid  black;
 }
 .btn-primary.active:not(:disabled):not(.disabled),
 .btn-primary:active:not(:disabled):not(.disabled),
 .show > .btn-primary.dropdown-toggle {
-	background-color:  #e60073;
-	border-color:  #e60073;
+	background-color:  black;
+	border-color:  black;
 	color: #fff;
 }
 .btn-primary.active:focus:not(:disabled):not(.disabled),
@@ -504,8 +516,8 @@ button.bg-danger:hover {
 	box-shadow: unset;
 }
 .btn-primary.disabled, .btn-primary:disabled {
-    background-color: #ff0080;
-    border-color: #ff0080;
+    background-color: black;
+    border-color: black;
     color: #fff;
 }
 .btn-secondary.active:focus:not(:disabled):not(.disabled),
@@ -2216,7 +2228,8 @@ html.menu-opened body {
 	vertical-align: middle;
 }
 .loginbox {
-    background-color: #fff;
+    background-color: #000;
+    color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 12px 0px rgba(55, 73, 72, 0.02);
     max-width: 500px;
@@ -2760,7 +2773,7 @@ small.help-block {
     z-index: -1;
     pointer-events: none;
     height: 50vh;
-    background-color: #ff0080;
+    background-color: rgb(42, 41, 41);
     border-radius: 0 0 2.5rem 2.5rem;
 	z-index: 0;
 }
@@ -4080,8 +4093,8 @@ textarea.form-control.content-textarea {
 }
 
 .btn-primary {
-	background-color: #ff0080;
-    border: 1px solid #ff0080;
+	background-color: black;
+    border: 1px solid black;
 }
 .invoice-faq .faq-tab {
     padding-top: 10px;
@@ -4247,8 +4260,8 @@ textarea.form-control.content-textarea {
     padding: 10px 0;
 }
 .btn-primary {
-	background-color: #ff0080;
-    border: #ff0080;
+	background-color: black;
+    border: 1px solid black;
 }
 .invoices-page-header .invoices-breadcrumb-item i {
     color: #fff;

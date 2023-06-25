@@ -24,14 +24,12 @@
                     <div class="login-right-wrap">
                         <div class="account-header">
                             <div class="account-logo text-center mb-4">
-                                <a href="index.html">
-                                    <img src="{{asset('admin')}}/assets/img/logo-icon.png" alt="" class="img-fluid">
-                                </a>
+                                <h4>Logo</h4>
                             </div>
                         </div>
                         <div class="login-header">
-                            <h3>Login <span>Truelysell</span></h3>
-                            <p class="text-muted">Access to our dashboard</p>
+                            <h3>Login Admin Dashboard</h3>
+                            <p class="text-muted">Only Admin can access it</p>
                         </div>
                         <form action="{{ route('login') }}" method="POST">
                             @csrf
@@ -60,28 +58,29 @@
                                 @enderror
                             </div>
                             <div class="row mb-3">
-                                <div class="col-md-6 offset-md-4">
+                                <div class="col-md-6 d-flex align-items-center">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                            {{ old('remember') ? 'checked' : '' }}>
+                                            {{ old('remember') ? 'checked' : '' }} style="cursor: pointer;">
 
-                                        <label class="form-check-label" for="remember">
+                                        <label class="form-check-label" for="remember" style="cursor: pointer;">
                                             {{ __('Remember Me') }}
                                         </label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
-
+                                <div class="col-md-6">
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-link text-light text-decoration-none" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                     @endif
+                                </div>
+                            </div>
+                            <div class="row mb-0">
+                                <div class="col-md-12 d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-bg-light btn-light">
+                                        {{ __('Login') }}
+                                    </button>
                                 </div>
                             </div>
                         </form>

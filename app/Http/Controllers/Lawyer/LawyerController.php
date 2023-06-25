@@ -58,4 +58,9 @@ class LawyerController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
         return view('front-layouts.pages.lawyer.profile', compact('user'));
     }
+
+    public function profile_submit(Request $request){
+        $id = Auth::user()->id;
+        $user = User::where('id', $id)->first();
+    }
 }

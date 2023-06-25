@@ -36,6 +36,10 @@ Route::get('/chat', [PusherController::class, 'index'])->name('chat');
 Route::post('/broadcast', [PusherController::class, 'broadcast'])->name('broadcast');
 Route::post('/receive', [PusherController::class, 'receive'])->name('receive');
 
+Route::get('image/update', function () {
+    return view('front-layouts.pages.lawyer.image-update');
+});
+
 Auth::routes();
 
 // ADMIN PART
@@ -69,6 +73,7 @@ Route::middleware(['auth', 'lawyer'])->group(function () {
     Route::post('/lawyer/documents/submit', [LawyerController::class, 'submit_documents'])->name('lawyer.documents.submit');
 
     Route::get('/lawyer/profile/setting', [LawyerController::class, 'profile_setting'])->name('lawyer.profile.setting');
+    Route::post('/lawyer/profile/submit', [LawyerController::class, 'profile_submit'])->name('lawyer.profile.submit');
 });
 
 // CUSTOMER PART

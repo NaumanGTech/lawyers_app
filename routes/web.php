@@ -83,6 +83,10 @@ Route::middleware(['auth', 'customer'])->group(function () {
     // LAwyers
     Route::get('lawyer/list', [CustomerController::class, 'lawyer_list'])->name('lawyer.list');
     Route::get('lawyer/profile/{id}', [CustomerController::class, 'lawyer_profile'])->name('lawyer.profile');
+
+    // user profile
+    Route::get('customer/profile', [CustomerController::class, 'customerProfile'])->name('customer.profile');
+    Route::post('customer/profile/update/{user}', [CustomerController::class, 'customerProfileUpdate'])->name('customer.profile.update');
 });
 
 

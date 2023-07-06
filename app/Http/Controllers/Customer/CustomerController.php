@@ -29,4 +29,34 @@ class CustomerController extends Controller
         $lawyerProfile = User::where('id', $id)->first();
         return view('front-layouts.pages.customer.lawyers.profile', get_defined_vars());
     }
+
+    public function customerProfile()
+    {
+        $auth = auth()->user()->id;
+        $customerProfile = User::where('id', $auth)->first();
+        return view('front-layouts.pages.customer.profile', get_defined_vars());
+    }
+
+    public function customerProfileUpdate(User $user, Request $request)
+    {
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+
+            // 'updated_at' => now()
+        ]);
+
+        if ($request->file()) {
+            // dd($user);
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('uploads/user'), $imageName);
+            User::whereId($user->id)->update([
+                'image' => $imageName
+            ]);
+        }
+
+        return back();
+    }
 }

@@ -8,18 +8,19 @@
                     <span></span>
                 </span>
             </a>
-            <a href="index.html" class="navbar-brand logo">
-                <img src="{{asset('front')}}/assets/img/logo.png" class="img-fluid" alt="Logo">
+            <a href="{{ route('customer.dashboard') }}" class="navbar-brand logo">
+                <img src="{{ asset('front') }}/assets/img/logo.png" class="img-fluid" alt="Logo">
             </a>
-            <a href="index.html" class="navbar-brand logo-small">
-                <img src="{{asset('front')}}/assets/img/logo-icon.png" class="img-fluid" alt="Logo">
+            <a href="{{ route('customer.dashboard') }}" class="navbar-brand logo-small">
+                <img src="{{ asset('front') }}/assets/img/logo-icon.png" class="img-fluid" alt="Logo">
             </a>
         </div>
 
         <ul class="nav header-navbar-rht">
             <li class="nav-item desc-list wallet-menu">
                 <a href="user-wallet.html" class="nav-link header-login">
-                    <img src="{{asset('front')}}/assets/img/wallet.png" alt="" class="me-2 wallet-img"><span>Wallet:</span> $1875
+                    <img src="{{ asset('front') }}/assets/img/wallet.png" alt=""
+                        class="me-2 wallet-img"><span>Wallet:</span> $1875
                 </a>
             </li>
 
@@ -40,7 +41,7 @@
                                     <div class="media d-flex">
                                         <span class="avatar avatar-sm flex-shrink-0">
                                             <img class="avatar-img rounded-circle" alt="User Image"
-                                                src="{{asset('front')}}/assets/img/customer/user-01.jpg">
+                                                src="{{ asset('front') }}/assets/img/customer/user-01.jpg">
                                         </span>
                                         <div class="media-body flex-grow-1">
                                             <p class="noti-details"> <span class="noti-title">Jeffrey Akridge has
@@ -56,7 +57,7 @@
                                     <div class="media d-flex">
                                         <span class="avatar avatar-sm flex-shrink-0">
                                             <img class="avatar-img rounded-circle" alt="User Image"
-                                                src="{{asset('front')}}/assets/img/customer/user-02.jpg">
+                                                src="{{ asset('front') }}/assets/img/customer/user-02.jpg">
                                         </span>
                                         <div class="media-body flex-grow-1">
                                             <p class="noti-details"> <span class="noti-title">Nancy Olson has booked
@@ -72,7 +73,7 @@
                                     <div class="media d-flex">
                                         <span class="avatar avatar-sm flex-shrink-0">
                                             <img class="avatar-img rounded-circle" alt="User Image"
-                                                src="{{asset('front')}}/assets/img/customer/user-03.jpg">
+                                                src="{{ asset('front') }}/assets/img/customer/user-03.jpg">
                                         </span>
                                         <div class="media-body flex-grow-1">
                                             <p class="noti-details"> <span class="noti-title">Ramona Kingsley has
@@ -88,7 +89,7 @@
                                     <div class="media d-flex">
                                         <span class="avatar avatar-sm flex-shrink-0">
                                             <img class="avatar-img rounded-circle" alt="User Image"
-                                                src="{{asset('front')}}/assets/img/customer/user-04.jpg">
+                                                src="{{ asset('front') }}/assets/img/customer/user-04.jpg">
                                         </span>
                                         <div class="media-body flex-grow-1">
                                             <p class="noti-details"> <span class="noti-title">Ricardo Lung has booked
@@ -104,7 +105,7 @@
                                     <div class="media d-flex">
                                         <span class="avatar avatar-sm flex-shrink-0">
                                             <img class="avatar-img rounded-circle" alt="User Image"
-                                                src="{{asset('front')}}/assets/img/customer/user-05.jpg">
+                                                src="{{ asset('front') }}/assets/img/customer/user-05.jpg">
                                         </span>
                                         <div class="media-body flex-grow-1">
                                             <p class="noti-details"> <span class="noti-title">Annette Silva has booked
@@ -136,17 +137,16 @@
             <li class="nav-item dropdown has-arrow logged-item">
                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="user-img">
-                        <img class="rounded-circle" src="{{asset('front')}}/assets/img/customer/user-01.jpg" alt="">
+                        <img class="rounded-circle" src="<?= auth()->user()->image ?>" alt="">
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <div class="user-header">
                         <div class="avatar avatar-sm">
-                            <img class="avatar-img rounded-circle" src="{{asset('front')}}/assets/img/customer/user-01.jpg"
-                                alt="">
+                            <img class="avatar-img rounded-circle" src="<?= auth()->user()->image ?>" alt="">
                         </div>
                         <div class="user-text">
-                            <h6>Jeffrey Akridge</h6>
+                            <h6>{{ auth()->user()->name }}</h6>
                             <p class="text-muted mb-0">User</p>
                         </div>
                     </div>
@@ -157,14 +157,14 @@
                     <a class="dropdown-item" href="all-services.html">Book Services</a>
                     <a class="dropdown-item" href="chat.html">Chat</a> --}}
                     <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
+                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
+                        {{ __('Logout') }}
+                    </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </li>
             <!-- /User Menu -->

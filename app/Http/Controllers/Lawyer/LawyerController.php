@@ -60,7 +60,23 @@ class LawyerController extends Controller
     }
 
     public function profile_submit(Request $request){
+        // $request->validate([
+        //     'name' => "required|string|min:3",
+        //     'email' => "required|email|unique:user,email",
+        //     'phone' => "required|regex:/^[0-9]{10,}$/",
+        //     'date_of_birth' => "required|date",
+        //     'gender' => "required",
+        //     'address' => "required|string",
+        //     'country' => "required|string",
+        //     'city' => "required|string",
+        //     'state' => "required|string",
+        //     'postal_code' => "required|regex:/^[0-9]+$/",
+        // ]);
+
         $id = Auth::user()->id;
         $user = User::where('id', $id)->first();
+        $user->update($request->all());
+
+        return redirect()->back()->with('message', 'Your Data is updated successfully');
     }
 }

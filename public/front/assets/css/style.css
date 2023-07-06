@@ -279,9 +279,21 @@ ul li {
 .form-group {
     margin-bottom: 1rem;
 }
+.white-date-input::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+}
 label {
     display: inline-block;
     margin-bottom: 0.5rem;
+}
+
+.black_label{
+    color: black !important;
+}
+.black_input{
+    border-color: #000 !important;
+    color: white !important;
+    background-color: #000 !important;
 }
 .form-control {
     border-color: #dcdcdc;

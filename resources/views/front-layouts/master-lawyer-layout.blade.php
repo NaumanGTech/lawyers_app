@@ -5,7 +5,6 @@
     @include('front-layouts.partials.head')
     @include('front-layouts.assets.css')
 </head>
-
 <body>
     <div class="main-wrapper">
         @include('front-layouts.partials.lawyer-navbar')
@@ -23,5 +22,4 @@
     </div>
     @include('front-layouts.assets.script')
 </body>
-
 </html>

@@ -1,8 +1,7 @@
 @extends('front-layouts.master-lawyer-layout')
-@section('content')
+@section('injected-css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-xxxxx" crossorigin="anonymous" />
-
     <style>
         .dropdown-toggle.btn-default {
             color: #292b2c;
@@ -176,6 +175,8 @@
             margin-top: 7px;
         }
     </style>
+@endsection
+@section('content')
     <form action="{{ route('lawyer.profile.submit') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="widget">
@@ -209,26 +210,26 @@
                 <h5 class="form-title">Personal Information</h5>
             </div>
             <div class="form-group col-xl-6">
-                <label class="me-sm-2">Name</label>
-                <input class="form-control" type="text" value="{!! $user->name !!}">
+                <label class="me-sm-2 black_label">Name</label>
+                <input class="form-control black_input" name="name" type="text" value="{!! $user->name !!}">
             </div>
             <div class="form-group col-xl-6">
-                <label class="me-sm-2">Email</label>
-                <input class="form-control" type="email" value="{!! $user->email !!}">
+                <label class="me-sm-2 black_label">Email</label>
+                <input class="form-control black_input" name="email" type="email" value="{!! $user->email !!}">
             </div>
             <div class="form-group col-xl-6">
-                <label class="me-sm-2">Mobile Number</label>
-                <input class="form-control no_only" type="text" value="{!! $user->phone !!}" required="">
+                <label class="me-sm-2 black_label">Mobile Number</label>
+                <input class="form-control black_input no_only" name="phone" type="text" value="{!! $user->phone !!}" required>
             </div>
             <div class="form-group col-xl-6">
-                <label class="me-sm-2">Date of birth</label>
-                <input type="date" class="form-control provider_datepicker" autocomplete="off"
-                    onchange="validateBirthdate(event)" value="{!! $user->date_of_birth !!}">
+                <label class="me-sm-2 black_label">Date of birth</label>
+                <input type="date" class="form-control black_input white-date-input provider_datepicker" autocomplete="off"
+                    onchange="validateBirthdate(event)" name="date_of_birth" value="{!! $user->date_of_birth !!}">
                 <small id="birthdateError" class="form-text text-danger"></small>
             </div>
             <div class="form-group col-xl-6">
-                <label class="me-sm-2">Gender</label>
-                <select class="form-control form-select" name="gender">
+                <label class="me-sm-2 black_label">Gender</label>
+                <select class="form-control form-select black_input" name="gender">
                     <option>Select Gender</option>
                     <option value="male" {{ $user->gender === 'male' ? 'selected' : '' }}>Male</option>
                     <option value="female" {{ $user->gender === 'female' ? 'selected' : '' }}>Female</option>
@@ -240,31 +241,32 @@
                 <h5 class="form-title">Address Information</h5>
             </div>
             <div class="form-group col-xl-12">
-                <label class="me-sm-2">Address</label>
-                <input type="text" class="form-control">
+                <label class="me-sm-2 black_label">Address</label>
+                <input type="text" name="address" class="form-control black_input" value="{{ $user->address ?? ""}}">
             </div>
             <div class="form-group col-xl-6">
-                <label class="me-sm-2">Country</label>
-                {{-- <input class="form-control" type="text" value="{!! $user->country !!}"> --}}
-                <select class="selectpicker countrypicker form-control" data-flag="true"></select>
+                <label class="me-sm-2" for="country">Country</label>
+                <input class="form-control black_input" type="text" name="country" value="{!! $user->country !!}">
             </div>
             <div class="form-group col-xl-6">
-                <label class="me-sm-2">City</label>
-                <input class="form-control" type="text" value="{!! $user->city !!}">
+                <label class="me-sm-2 black_label" for="city">City</label>
+                <input class="form-control black_input" type="text" name="city" value="{!! $user->city !!}">
             </div>
             <div class="form-group col-xl-6">
-                <label class="me-sm-2">State</label>
-                <select class="form-control form-select"></select>
+                <label class="me-sm-2 black_label" for="state">State</label>
+                <input class="form-control black_input" type="text" name="state" value="{!! $user->city !!}">
             </div>
             <div class="form-group col-xl-6">
-                <label class="me-sm-2">Postal Code</label>
-                <input type="text" class="form-control" value="654587">
+                <label class="me-sm-2 black_label" for="postal_code">Postal Code</label>
+                <input type="text" class="form-control black_input" name="postal_code" value="{{ $user->postal_code ?? ""}}">
             </div>
             <div class="form-group col-xl-12">
-                <button class="btn btn-primary ps-5 pe-5" type="submit">Update</button>
+                <button class="btn btn-primary ps-5 pe-5 update_button" type="submit">Update</button>
             </div>
         </div>
     </form>
+@endsection
+@section('injected-scripts')
     <script>
         $('.countrypicker').countrypicker();
     </script>
@@ -290,8 +292,10 @@
 
             if (selectedDate > minBirthdate) {
                 birthdateError.textContent = 'You must be at least 18 years old.';
+                $('.update_button').prop('disabled', true);
             } else {
                 birthdateError.textContent = '';
+                $('.update_button').prop('disabled', false);
                 // Date is valid, continue with further processing or form submission
             }
         }

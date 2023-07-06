@@ -1,14 +1,13 @@
 <!-- Footer -->
 <footer class="footer">
-
     <!-- Footer Top -->
-    <div class="footer-top">
+    <div class="footer-top aos">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <!-- Footer Widget -->
                     <div class="footer-widget footer-menu">
-                        <h2 class="footer-title">Quick Links </h2>
+                        <h2 class="footer-title">Quick Links  </h2>
                         <ul>
                             <li>
                                 <a href="about-us.html">About Us</a>
@@ -32,16 +31,13 @@
                         <h2 class="footer-title">Categories</h2>
                         <ul>
                             <li>
-                                <a href="search.html">Computer</a>
+                                <a href="search.html">See all Categories</a>
                             </li>
+                        </ul>
+                        <h2 class="footer-title mt-5">Locations</h2>
+                        <ul>
                             <li>
-                                <a href="search.html">Interior</a>
-                            </li>
-                            <li>
-                                <a href="search.html">Car Wash</a>
-                            </li>
-                            <li>
-                                <a href="search.html">Cleaning</a>
+                                <a href="search.html">See all Locations</a>
                             </li>
                         </ul>
                     </div>
@@ -57,10 +53,8 @@
                                 <p>367 Hillcrest Lane, Irvine, California, United States</p>
                             </div>
                             <p><i class="fas fa-headphones"></i> 321 546 8764</p>
-                            <p class="mb-0"><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection"
-                                    class="__cf_email__"
-                                    data-cfemail="0571777060697c7660696945607d64687569602b666a68">[email&#160;protected]</a>
-                            </p>
+                            {{-- <p class="mb-0"><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="52262027373e2b21373e3e12372a333f223e377c313d3f">[email&#160;protected]</a></p> --}}
+                            <p><i class="fas fa-envelope"></i>@example.com</p>
                         </div>
                     </div>
                     <!-- /Footer Widget -->
@@ -107,7 +101,7 @@
                 <div class="row">
                     <div class="col-md-6 col-lg-6">
                         <div class="copyright-text">
-                            <p class="mb-0">&copy; 2022 <a href="index.html">Truelysell</a>. All rights reserved.</p>
+                            <p class="mb-0">&copy; 2022 <a href="{{route('front')}}">Lawyers</a>. All rights reserved.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6">

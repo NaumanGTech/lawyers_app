@@ -59,6 +59,9 @@ class User extends Authenticatable
 
     public function getImageAttribute()
     {
+        if ($this->attributes['image'] == null) {
+            return asset('uploads/user.jpg');
+        }
         return asset('uploads/user') . '/' . $this->attributes['image'];
     }
 

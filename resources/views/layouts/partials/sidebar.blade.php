@@ -1,23 +1,23 @@
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
     <div class="sidebar-logo">
-        <a href="{{ route('home') }}" class="text-black">
+        <a href="{{ route('admin.dashboard') }}" class="text-black">
             Admin Dashboard
         </a>
     </div>
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
-                <li class="active">
-                    <a href="{{ route('home') }}"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
+                <li class="{{ (request()->is('admin/dashboard*')) ? 'active' : '' }}">
+                    <a href="{{ route('admin.dashboard') }}"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
                 </li>
-                <li class="active">
+                <li class="{{ (request()->is('all-users*')) ? 'active' : '' }}">
                     <a href="{{ route('all.users') }}"><i class="fas fa-columns"></i> <span>All Users</span></a>
                 </li>
-                <li class="active">
+                <li class="{{ (request()->is('category/index*')) ? 'active' : '' }}">
                     <a href="{{ route('category.index') }}"><i class="fas fa-columns"></i> <span>Categories</span></a>
                 </li>
-                <li class="active">
+                <li class="{{ (request()->is('service/index*')) ? 'active' : '' }}">
                     <a href="{{ route('service.index') }}"><i class="fas fa-columns"></i> <span>Services</span></a>
                 </li>
                 {{-- <li>

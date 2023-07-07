@@ -17,13 +17,17 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user_id = auth()->user()->id;
-        $user = User::where('id', $user_id)->first();
-        if (Auth::user()->role == 'admin') {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        $user = Auth::user();
+        if ($user->role == 'admin') {
             return $next($request);
-        } else if ((Auth::user()->role !== 'admin')) {
-            return redirect()->back()->with('error', 'You do not have access of this page');
+        } else if ($user->role == "lawyer" || $user->role == "user") {
+            return redirect()->back()->with('error', 'You do not have access to this page');
         } else {
+            Auth::logout();
             return redirect('/login');
         }
     }

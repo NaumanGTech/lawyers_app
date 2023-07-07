@@ -26,10 +26,10 @@
                 <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
             </div>
             <ul class="main-nav">
-                <li class="active">
+                <li class="{{ (request()->is('/')) ? 'active' : '' }}">
                     <a href="{{route('front')}}">Home</a>
                 </li>
-                <li class="has-submenu">
+                <li class="has-submenu {{ (request()->is('categories*')) ? 'active' : '' }}">
 
                     <a href="{{ route('categories', ['filter' => 'all']) }}">Categories<i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
@@ -58,7 +58,7 @@
                         <li><a href="provider-subscription.html">Corporate lawyer</a></li>
                     </ul>
                 </li>
-                <li class="has-submenu">
+                <li class="has-submenu {{ (request()->is('lawyers/online*')) ? 'active' : '' }}">
                     <a href="{{route('lawyers.online', ['filter'=> 'all'])}}">Consult Online<i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
                         <li><a href="#">Chat</a></li>

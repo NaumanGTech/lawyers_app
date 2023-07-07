@@ -139,19 +139,15 @@
             <li class="nav-item dropdown has-arrow logged-item">
                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="user-img">
-                        <img class="rounded-circle" src="{{ asset('front') }}/assets/img/provider/provider-01.jpg"
-                            alt="" width="31">
+                        <img class="rounded-circle" src="{{$user->image}}"
+                            alt="Profile Picture" width="31">
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <div class="user-header">
-                        <div class="avatar avatar-sm">
-                            <img class="avatar-img rounded-circle"
-                                src="{{ asset('front') }}/assets/img/provider/provider-01.jpg" alt="">
-                        </div>
                         <div class="user-text">
-                            <h6 class="text-truncate">Thomas</h6>
-                            <p class="text-muted mb-0">Provider</p>
+                            <h6 class="text-truncate">{{$user->name}}</h6>
+                            <p class="text-muted mb-0">Lawyer</p>
                         </div>
                     </div>
                     {{-- <a class="dropdown-item" href="provider-dashboard.html">Dashboard</a>

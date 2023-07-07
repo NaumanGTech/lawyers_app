@@ -17,12 +17,19 @@ class LawyerMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role == 'lawyer') {
+        if (!Auth::check()) {
+            return redirect('/');
+        }
+
+        $user = Auth::user();
+
+        if ($user->role == "lawyer") {
             return $next($request);
-        } else if ((Auth::user()->role !== 'lawyer')) {
-            return redirect()->back()->with('error', 'You do not have access of this page');
+        }else if($user->role == "admin" || $user->role == "user"){
+            return redirect()->back()->with('error', 'You do not have access to this page');
         } else {
-            return redirect('/login');
+            Auth::logout();
+            return redirect('/');
         }
     }
 }

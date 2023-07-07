@@ -20,15 +20,19 @@ class CustomerMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if (!Auth::check()) {
+            return redirect('/')->with('error', 'You do not have access to this page');
+        }
 
-        $user_id = auth()->user()->id;
-        $user = User::where('id', $user_id)->first();
-        if (Auth::user()->role == 'user') {
+        $user = Auth::user();
+
+        if ($user->role == 'user') {
             return $next($request);
-        } else if ((Auth::user()->role !== 'user')) {
-            return redirect()->back()->with('error', 'You do not have access of this page');
+        } else if ($user->role == "lawyer" || $user->role == "admin") {
+            return redirect()->back()->with('error', 'You do not have access to this page');
         } else {
-            return redirect('/login');
+            Auth::logout();
+            return redirect('/');
         }
     }
 }

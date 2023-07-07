@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Flash;
 
 class LawyerController extends Controller
 {
@@ -54,29 +55,49 @@ class LawyerController extends Controller
         }
     }
 
-    public function profile_setting(){
+    public function profile_setting()
+    {
         $user = User::where('id', Auth::user()->id)->first();
         return view('front-layouts.pages.lawyer.profile', compact('user'));
     }
 
-    public function profile_submit(Request $request){
-        // $request->validate([
-        //     'name' => "required|string|min:3",
-        //     'email' => "required|email|unique:user,email",
-        //     'phone' => "required|regex:/^[0-9]{10,}$/",
-        //     'date_of_birth' => "required|date",
-        //     'gender' => "required",
-        //     'address' => "required|string",
-        //     'country' => "required|string",
-        //     'city' => "required|string",
-        //     'state' => "required|string",
-        //     'postal_code' => "required|regex:/^[0-9]+$/",
-        // ]);
+    public function profile_submit(Request $request)
+    {
+        $request->validate([
+            'name' => "required|string|min:3",
+            'email' => "required|email|unique:users,email," . Auth::user()->id,
+            'phone' => "required|regex:/^[0-9]{10,}$/",
+            'date_of_birth' => "required|date",
+            'gender' => "required",
+            'address' => "required|string",
+            'country' => "required|string",
+            'city' => "required|string",
+            'state' => "required|string",
+            'postal_code' => "required|regex:/^[0-9]+$/",
+        ]);
 
         $id = Auth::user()->id;
         $user = User::where('id', $id)->first();
-        $user->update($request->all());
 
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->phone = $request->input('phone');
+        $user->date_of_birth = $request->input('date_of_birth');
+        $user->gender = $request->input('gender');
+        $user->address = $request->input('address');
+        $user->country = $request->input('country');
+        $user->city = $request->input('city');
+        $user->state = $request->input('state');
+        $user->postal_code = $request->input('postal_code');
+
+        if ($request->file()) {
+            $imageName = rand(0, 9999). time(). '.' . $request->image->extension();
+            $request->file('image')->move(public_path('uploads/user'), $imageName);
+            $user->image = $imageName;
+        }
+        $user->update();
+
+        Flash::success('Your Data is updated successfully');
         return redirect()->back()->with('message', 'Your Data is updated successfully');
     }
 }

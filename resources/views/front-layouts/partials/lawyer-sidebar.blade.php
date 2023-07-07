@@ -1,23 +1,25 @@
 <div class="col-xl-3 col-md-4 theiaStickySidebar">
     <div class="mb-4">
-        <div class="d-sm-flex flex-row flex-wrap text-center text-sm-start align-items-center">
-            <img alt="profile image" src="{{ asset('front') }}/assets/img/provider/provider-01.jpg"
-                class="avatar-lg rounded-circle">
+        <div class="d-sm-flex flex-row text-center text-sm-start align-items-center">
+            <img alt="profile image" src="{{ $user->image }}" class="avatar-lg rounded-circle">
             <div class="ms-sm-3 ms-md-0 ms-lg-3 mt-2 mt-sm-0 mt-md-2 mt-lg-0">
-                <h6 class="mb-0">Thomas Herzberg</h6>
-                <p class="text-muted mb-0">Member Since Apr 2020</p>
+                <h6 class="mb-0">{{ $user->name }}</h6>
+                <?php
+                $formattedDate = date('M y', strtotime($user->created_at));
+                ?>
+                <p class="text-muted mb-0">Member Since {{ $formattedDate }}</p>
             </div>
         </div>
     </div>
     <div class="widget settings-menu">
         <ul>
             <li class="nav-item">
-                <a href="{{ route('lawyer.dashboard') }}" class="nav-link active">
+                <a href="{{ route('lawyer.dashboard') }}" class="nav-link {{ (request()->is('lawyer/dashboard*')) ? 'active' : '' }}">
                     <i class="fas fa-chart-line"></i> <span>Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('lawyer.profile.setting') }}" class="nav-link">
+                <a href="{{ route('lawyer.profile.setting') }}" class="nav-link {{ (request()->is('lawyer/profile/setting*')) ? 'active' : '' }}">
                     <i class="far fa-user"></i> <span>Profile Settings</span>
                 </a>
             </li>

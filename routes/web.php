@@ -7,6 +7,7 @@ use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Lawyer\LawyerController;
 use App\Http\Controllers\PusherController;
 use Illuminate\Support\Facades\Auth;
@@ -45,8 +46,7 @@ Auth::routes();
 
 // ADMIN PART
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
     Route::get('/all-users', [DashboardController::class, 'allUsers'])->name('all.users');
 
     Route::get('/category/index', [DashboardController::class, 'category_index'])->name('category.index');

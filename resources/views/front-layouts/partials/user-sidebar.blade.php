@@ -11,17 +11,17 @@
     <div class="widget settings-menu">
         <ul role="tablist" class="nav nav-tabs">
             <li class="nav-item current">
-                <a href="{{ route('customer.dashboard') }}" class="nav-link active">
+                <a href="{{ route('customer.dashboard') }}" class="nav-link {{ (request()->is('customer/dashboard*')) ? 'active' : '' }}">
                     <i class="fas fa-chart-line"></i> <span>Dashboard</span>
                 </a>
             </li>
             <li class="nav-item current">
-                <a href="{{ route('customer.profile') }}" class="nav-link">
+                <a href="{{ route('customer.profile') }}" class="nav-link {{ (request()->is('customer/profile*')) ? 'active' : '' }}">
                     <i class="fas fa-user"></i> <span>Profile</span>
                 </a>
             </li>
             <li class="nav-item current">
-                <a href="{{ route('lawyer.list') }}" class="nav-link">
+                <a href="{{ route('lawyer.list') }}" class="nav-link {{ (request()->is('lawyer/list*')) ? 'active' : '' }}">
                     <i class="fas fa-user"></i> <span>Lawyers</span>
                 </a>
             </li>

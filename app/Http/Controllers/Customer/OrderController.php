@@ -107,4 +107,19 @@ class OrderController extends Controller
             'message' => $message,
         ]);
     }
+
+    public function order_status(Request $request)
+    {
+        $status = $request->input('status');
+        $updateOrderStatus = Order::where('id', $request->order_id)->first();
+
+        if ($updateOrderStatus) {
+            $updateOrderStatus->customer_status = $status;
+            $updateOrderStatus->save();
+
+            return redirect()->back()->with('success', 'Order status updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update order status.');
+        }
+    }
 }

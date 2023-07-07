@@ -94,6 +94,8 @@ Route::middleware(['auth', 'customer'])->group(function () {
     Route::post('/order/store/{id}', [OrderController::class, 'order_store'])->name('order.store');
     Route::get('/order/detail/{id}', [OrderController::class, 'order_detail'])->name('order.details');
     Route::post('/order/delete/{id}', [OrderController::class, 'order_delete'])->name('order.delete');
+    // update order status
+    Route::post('/order/status', [OrderController::class, 'order_status'])->name('order.status');
 });
 
 

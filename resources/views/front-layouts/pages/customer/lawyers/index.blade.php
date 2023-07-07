@@ -1,5 +1,17 @@
 @extends('front-layouts.master-user-layout')
 @section('content')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if (session('message'))
+            toastr.success('{{ session('message') }}');
+        @endif
+    </script>
+    <script>
+        @if (session('error'))
+            toastr.error('{{ session('error') }}');
+        @endif
+    </script>
     <div class="col-xl-9 col-md-8">
         <h4 class="widget-title">All Lawyers</h4>
 

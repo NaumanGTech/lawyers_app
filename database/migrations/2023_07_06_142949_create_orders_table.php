@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('category_id')->nullable();
             $table->integer('amount')->nullable();
             $table->date('booking_date')->nullable();
+            $table->string('lawyer_status')->nullable();
+            $table->string('customer_status')->nullable();
             $table->string('lawyer_location')->nullable();
             $table->string('customer_location')->nullable();
             $table->timestamps();

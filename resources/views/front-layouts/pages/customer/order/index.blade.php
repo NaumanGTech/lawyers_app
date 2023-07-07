@@ -1,17 +1,10 @@
 @extends('front-layouts.master-user-layout')
 @section('content')
-    {{-- @if ('message')
-        <div class="toaster">
-            {{ 'message' }}
-        </div>
-    @endif
-    @if ('error')
-        <div class="toaster">
-            {{ 'error' }}
-        </div>
-    @endif --}}
+   
+
+
     <div class="col-xl-9 col-md-8">
-        <span class="text-danger">{{ 'error' }}</span>
+
         <div class="page-wrapper">
             <div class="content container-fluid">
 
@@ -94,7 +87,9 @@
                                                 <th>Lawyer Location</th>
                                                 <th>Amount</th>
                                                 <th>Booking Date</th>
-                                                <th class="text-end">Action</th>
+                                                <th>Lawyer status</th>
+                                                <th>Customer Status</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -107,11 +102,25 @@
                                                     <td>{{ $val->lawyer_location }}</td>
                                                     <td>{{ $val->amount }}</td>
                                                     <td>{{ $val->booking_date }}</td>
-                                                    <td class="text-end">
-                                                        <a href="{{ route('category.form', $val->id) }}"
-                                                            class="btn btn-sm bg-success-light me-2"> <i
-                                                                class="far fa-edit me-1"></i> Edit</a>
+                                                    <td>
+                                                        <span class="text-danger">{!! $val->lawyer_status ?? 'pending' !!}</span>
                                                     </td>
+                                                    <td>
+                                                        <form id="my-form" action="{{ route('order.status') }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            <input type="hidden" name="order_id"
+                                                                value="{{ $val->id }}">
+                                                            <select id="status-select" class="form-control select"
+                                                                name="status">
+                                                                <option>{!! $val->customer_status ?? 'Status' !!}</option>
+                                                                <option value="Pending">Pending</option>
+                                                                <option value="Completed">Completed</option>
+                                                            </select>
+                                                        </form>
+
+                                                    </td>
+
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -125,7 +134,15 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#status-select').on('change', function() {
+                $('#my-form').submit();
+            });
+        });
+    </script>
+
     <script>
         toastr.success('Order placed successfully');
     </script>

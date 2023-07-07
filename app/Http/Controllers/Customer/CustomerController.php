@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -39,14 +40,9 @@ class CustomerController extends Controller
 
     public function customerProfileUpdate(User $user, Request $request)
     {
-
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-
-            // 'updated_at' => now()
-        ]);
+        $id = Auth::user()->id;
+        $user = User::where('id', $id)->first();
+        $user->update($request->all());
 
         if ($request->file()) {
             // dd($user);

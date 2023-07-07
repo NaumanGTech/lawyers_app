@@ -14,6 +14,8 @@ class Order extends Model
         'category_id',
         'amount',
         'booking_date',
+        'lawyer_status',
+        'customer_status',
         'lawyer_location',
         'customer_location',
 

@@ -1,5 +1,119 @@
 @extends('front-layouts.master-user-layout')
 @section('content')
+    <style>
+        .avatar-upload {
+            position: relative;
+            max-width: 205px;
+            margin: -18px 10px;
+
+            .avatar-edit {
+                position: absolute;
+                right: 0px;
+                z-index: 1;
+                top: 0px;
+
+                input {
+                    display: none;
+
+                    +label {
+                        display: inline-block;
+                        width: 34px;
+                        height: 34px;
+                        margin-bottom: 0;
+                        border-radius: 100%;
+                        background: #FFFFFF;
+                        border: 1px solid transparent;
+                        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                        cursor: pointer;
+                        font-weight: normal;
+                        transition: all .2s ease-in-out;
+
+                        &:hover {
+                            background: #f1f1f1;
+                            border-color: #d6d6d6;
+                        }
+
+                        &:after {
+                            content: "\f040";
+                            font-family: 'FontAwesome';
+                            color: #757575;
+                            position: absolute;
+                            top: 10px;
+                            left: 0;
+                            right: 0;
+                            text-align: center;
+                            margin: auto;
+                        }
+                    }
+                }
+            }
+
+            .avatar-preview {
+                width: 160px;
+                height: 160px;
+                position: relative;
+                border-radius: 30%;
+                border: 5px solid black;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+
+                >div {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 30%;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+            }
+        }
+
+        .avatar-upload {
+            position: relative;
+            max-width: 200px;
+        }
+
+        .avatar-edit {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+        }
+
+        .avatar-edit label {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: black;
+            padding: 0.05rem 0.4rem;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            text-align: center;
+            line-height: 32px;
+        }
+
+        .avatar-preview {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .avatar-preview div {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .fa-pencil {
+            margin-top: 7px;
+        }
+    </style>
+
     <div class="col-xl-9 col-md-8">
         <div class="tab-content pt-0">
             <div class="tab-pane show active" id="user_profile_settings">
@@ -9,19 +123,30 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-xl-12">
-                                <h5 class="form-title">Basic Information</h5>
-                            </div>
-                            <div class="form-group col-xl-12">
-                                <div class="media align-items-center mb-3 d-flex">
-                                    <img class="user-image" src="<?= $customerProfile->image ?>" alt="">
-                                    <div class="media-body">
-                                        <h5 class="mb-0">{{ $customerProfile->name }}</h5>
-                                        <p>Max file size is 20mb</p>
-                                        <div class="jstinput"> <a href="javascript:void(0);"
-                                                class="avatar-view-btn browsephoto openfile">
-                                                <input name="image" type="file"
-                                                    class="avatar-view-btn browsephoto openfile" />Browse</a>
+
+                            <div class="widget">
+                                <div class="row">
+
+                                    <div class="form-group col-xl-6">
+                                        <div class="media align-items-center mb-3 d-flex">
+                                            <div class="avatar-upload">
+                                                <div class="avatar-edit">
+                                                    <input name="image" type="file" id="imageUpload"
+                                                        accept=".png, .jpg, .jpeg" hidden />
+                                                    <label for="imageUpload" class="btn btn-primary" class="pencil-lable"><i
+                                                            class="fas fa-pencil-alt"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="avatar-preview">
+                                                    <div id="imagePreview"
+                                                        style="background-image: url('{!! $customerProfile->image !!}');"></div>
+
+                                                </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="mb-0">Advocate</p>
+                                                <h5 class="mb-0">{!! $customerProfile->name !!}</h5>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -44,20 +169,34 @@
                             </div>
                             <div class="form-group col-xl-6">
                                 <label class="me-sm-2">Mobile Number</label>
-                                <input class="form-control no_only" type="text" value="{{ $customerProfile->phone }}0"
+                                <input class="form-control no_only" type="text" value="{{ $customerProfile->phone }}"
                                     name="phone" required="">
                             </div>
                             <div class="form-group col-xl-6">
                                 <label class="me-sm-2">Date of birth</label>
-                                <input type="date" class="form-control" autocomplete="off" name="dob"
-                                    value="01-01-1970">
+                                <input type="date" class="form-control black_input white-date-input provider_datepicker"
+                                    autocomplete="off" onchange="validateBirthdate(event)" name="date_of_birth"
+                                    value="{!! $customerProfile->date_of_birth !!}">
                             </div>
-                            <div class="col-xl-12">
-                                <h5 class="form-title">Address</h5>
+
+                            <div class="form-group col-xl-6">
+                                <label class="me-sm-2 black_label">Gender</label>
+                                <select class="form-control form-select black_input" name="gender">
+                                    <option>Select Gender</option>
+                                    <option value="male" {{ $customerProfile->gender === 'male' ? 'selected' : '' }}>Male
+                                    </option>
+                                    <option value="female" {{ $customerProfile->gender === 'female' ? 'selected' : '' }}>
+                                        Female
+                                    </option>
+                                    <option value="other" {{ $customerProfile->gender === 'other' ? 'selected' : '' }}>
+                                        Other</option>
+                                </select>
                             </div>
+
                             <div class="form-group col-xl-12">
                                 <label class="me-sm-2">Address</label>
-                                <input type="text" class="form-control" name="address" value="">
+                                <input type="text" class="form-control" name="address"
+                                    value="{{ $customerProfile->address }}">
                             </div>
                             <div class="form-group col-xl-6">
                                 <label class="me-sm-2">Country</label>
@@ -313,15 +452,18 @@
                             </div>
                             <div class="form-group col-xl-6">
                                 <label class="me-sm-2">State</label>
-                                <select class="form-control form-select" name="state_id" id="state_id"></select>
+                                <input class="form-control black_input" type="text" name="state"
+                                    value="{!! $customerProfile->city !!}">
                             </div>
                             <div class="form-group col-xl-6">
                                 <label class="me-sm-2">City</label>
-                                <select class="form-control form-select" name="city_id" id="city_id"></select>
+                                <input class="form-control black_input" type="text" name="city"
+                                    value="{!! $customerProfile->city !!}">
                             </div>
                             <div class="form-group col-xl-6">
                                 <label class="me-sm-2">Postal Code</label>
-                                <input type="text" class="form-control" name="postal_code" value="665487">
+                                <input type="text" class="form-control black_input" name="postal_code"
+                                    value="{{ $customerProfile->postal_code ?? '' }}">
                             </div>
                             <div class="form-group col-xl-12">
                                 <button name="form_submit" id="form_submit" class="btn btn-primary ps-5 pe-5"
@@ -333,4 +475,21 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                    $('#imagePreview').hide();
+                    $('#imagePreview').fadeIn(650);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#imageUpload").change(function() {
+            readURL(this);
+        });
+    </script>
 @endsection

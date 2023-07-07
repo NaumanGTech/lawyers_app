@@ -25,6 +25,11 @@
                     <i class="fas fa-user"></i> <span>Lawyers</span>
                 </a>
             </li>
+            <li class="nav-item current">
+                <a href="{{ route('order.index') }}" class="nav-link">
+                    <i class="fas fa-user"></i> <span>Orders</span>
+                </a>
+            </li>
             {{-- <li class="nav-item current">
                 <a href="favourites.html" class="nav-link">
                     <i class="fas fa-heart"></i> <span>Favourites</span>

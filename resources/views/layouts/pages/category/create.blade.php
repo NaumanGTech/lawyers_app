@@ -47,8 +47,8 @@
                                     <a href="categories.html" class="btn btn-link">Cancel</a>
                                 </div>
                             </form>
-                            <!-- Form -->
-
+<!-- Form -->
+     
                         </div>
                     </div>
                 </div>

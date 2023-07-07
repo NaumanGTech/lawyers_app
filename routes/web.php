@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LawyerRegisterController;
 use App\Http\Controllers\Auth\UsersLoginController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\Lawyer\LawyerController;
 use App\Http\Controllers\PusherController;
@@ -87,6 +88,12 @@ Route::middleware(['auth', 'customer'])->group(function () {
     // user profile
     Route::get('customer/profile', [CustomerController::class, 'customerProfile'])->name('customer.profile');
     Route::post('customer/profile/update/{user}', [CustomerController::class, 'customerProfileUpdate'])->name('customer.profile.update');
+
+    Route::get('/order/index', [OrderController::class, 'order_index'])->name('order.index');
+    Route::get('/order/form/{id}', [OrderController::class, 'order_form'])->name('order.form');
+    Route::post('/order/store/{id}', [OrderController::class, 'order_store'])->name('order.store');
+    Route::get('/order/detail/{id}', [OrderController::class, 'order_detail'])->name('order.details');
+    Route::post('/order/delete/{id}', [OrderController::class, 'order_delete'])->name('order.delete');
 });
 
 

@@ -45,6 +45,23 @@
 
                                         </div>
 
+                                        <?php
+                                        $update_id = 0;
+                                        
+                                        if (isset($obj->id) && !empty($obj->id)) {
+                                            $update_id = $obj->id;
+                                        }
+                                        ?>
+
+                                        <form action="{{ route('order.store', $update_id) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="lawyer_id" value="{{ $lawyer->id }}"
+                                                id="">
+                                            <input type="hidden" name="amount" value="1000" id="">
+                                            <button type="submit" class="btn btn-primary text-white"> Book Service
+                                            </button>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Lawyer\LawyerController;
+use App\Http\Controllers\Lawyer\ServiceController;
 use App\Http\Controllers\PusherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,15 @@ Route::middleware(['auth', 'lawyer'])->group(function () {
 
     Route::get('/lawyer/profile/setting', [LawyerController::class, 'profile_setting'])->name('lawyer.profile.setting');
     Route::post('/lawyer/profile/submit', [LawyerController::class, 'profile_submit'])->name('lawyer.profile.submit');
+
+    // Services Crud
+    Route::get('/lawyer/service/list', [ServiceController::class, 'index'])->name('lawyer.service.list');
+    Route::get('/lawyer/service/form/{id}', [ServiceController::class, 'create'])->name('lawyer.service.create');
+    Route::post('/lawyer/service/store/{id}', [ServiceController::class, 'store'])->name('lawyer.service.store');
+    Route::post('/lawyer/service/detail/{id}', [ServiceController::class, 'detail'])->name('lawyer.service.detail');
+    Route::post('lawyer/service/delete/{id}', [ServiceController::class, 'delete'])->name('lawyer.service.delete');
+
+    Route::get('/lawyer/category/list', [ServiceController::class, 'category_list'])->name('lawyer.category.list');
 });
 
 // CUSTOMER PART

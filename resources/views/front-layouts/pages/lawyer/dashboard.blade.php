@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-4">
             <a href="provider-bookings.html" class="dash-widget dash-bg-2">
-                <span class="dash-widget-icon">245</span>
+                <span class="dash-widget-icon">{{$booking ?? 0}}</span>
                 <div class="dash-widget-info">
                     <span>My Bookings</span>
                 </div>
@@ -12,7 +12,7 @@
         </div>
         <div class="col-lg-4">
             <a href="my-services.html" class="dash-widget dash-bg-2">
-                <span class="dash-widget-icon">66</span>
+                <span class="dash-widget-icon">{{$service ?? 0}}</span>
                 <div class="dash-widget-info">
                     <span>My Services</span>
                 </div>
@@ -20,7 +20,7 @@
         </div>
         <div class="col-lg-4">
             <a href="notifications.html" class="dash-widget dash-bg-2">
-                <span class="dash-widget-icon">8</span>
+                <span class="dash-widget-icon">{{$category ?? 0}}</span>
                 <div class="dash-widget-info">
                     <span>My Categories</span>
                 </div>

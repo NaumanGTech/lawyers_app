@@ -2,13 +2,13 @@
 @section('injected-css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-xxxxx" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{{asset('front')}}/assets/css/custom.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/assets/css/custom.css">
 @endsection
 @section('content')
     @if (session('message'))
-    <div id="flash-message" class="mb-3">
-        @include('flash::message')
-    </div>
+        <div id="flash-message" class="mb-3">
+            @include('flash::message')
+        </div>
     @endif
     <form action="{{ route('lawyer.profile.submit') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -27,7 +27,7 @@
                                 </label>
                             </div>
                             <div class="avatar-preview">
-                                <div id="imagePreview" style="background-image: url({{$user->image ?? ''}});"></div>
+                                <div id="imagePreview" style="background-image: url({{ $user->image ?? '' }});"></div>
                             </div>
                         </div>
                         <div class="media-body">
@@ -157,7 +157,7 @@
         $('.countrypicker').countrypicker();
     </script>
     <script>
-        setTimeout(function(){
+        setTimeout(function() {
             document.getElementById('flash-message').style.display = 'none';
         }, 3000);
     </script>
@@ -191,5 +191,5 @@
             }
         }
     </script>
-    <script src="{{asset('front')}}/assets/js/custom.js"></script>
+    <script src="{{ asset('front') }}/assets/js/custom.js"></script>
 @endsection

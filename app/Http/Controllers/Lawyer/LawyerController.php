@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Lawyer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,11 @@ class LawyerController extends Controller
         if (Auth::user()->is_document_submit == 0) {
             return redirect()->route('lawyer.document.verification');
         } else {
-            return view('front-layouts.pages.lawyer.dashboard');
+            $service = Service::where('user_id', Auth::id())->count();
+            $booking = Service::where('user_id', Auth::id())->count();
+            $category = Service::where('user_id', Auth::id())->count();
+
+            return view('front-layouts.pages.lawyer.dashboard', get_defined_vars());
         }
     }
 

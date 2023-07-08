@@ -25,8 +25,12 @@
     <style>
         .dropify-wrapper {
             height: 180px !important;
-            border: 4px solid black !important;
+            border: none;
+            box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.3);
             color: black !important;
+        }
+        .dropify-wrapper:hover{
+            box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.3);
         }
 
         .preview-image {
@@ -55,7 +59,11 @@
             color: black !important;
         }
         .bs-dropzone{
-            border: 4px solid black !important;
+            box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .bs-dropzone:hover{
+            box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -98,7 +106,7 @@
         </header>
         <!-- /Header -->
 
-        <div class="content" style="background-color: darkgray;">
+        <div class="content">
             <div class="container m-0">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
@@ -111,7 +119,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-6 mb-4">
-                                    <label for="degree" class="text-light"><b>Upload Your Law Degree Here</b></label>
+                                    <label for="degree"><b>Upload Your Law Degree Here</b></label>
                                     <input type="file" name="degree" class="degree-dropify"
                                         data-default-file="{{ asset('front') }}/assets/img/document.png">
                                 </div>
@@ -121,7 +129,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="images[]" class="text-light"><b>Upload Your Awards and Certificates</b></label>
+                                        <label for="images[]"><b>Upload Your Awards and Certificates</b></label>
                                         <input type="file" name="images[]" id="demo-4" multiple />
                                     </div>
                                     <div class="form-group mb-0">

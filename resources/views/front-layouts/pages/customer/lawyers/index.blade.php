@@ -12,6 +12,7 @@
             toastr.error('{{ session('error') }}');
         @endif
     </script>
+
     <div class="col-xl-9 col-md-8">
         <h4 class="widget-title">All Lawyers</h4>
 
@@ -32,7 +33,7 @@
                                     <span class="service-price">$25</span>
                                 </div>
                                 <div class="cate-list">
-                                    <a class="bg-yellow" href="service-details.html">Glass</a>
+                                    <a class="bg-yellow" href="">Glass</a>
                                 </div>
                             </div>
                         </div>

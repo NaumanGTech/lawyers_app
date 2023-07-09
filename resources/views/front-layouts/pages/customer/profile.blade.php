@@ -117,59 +117,62 @@
     <div class="col-xl-9 col-md-8">
         <div class="tab-content pt-0">
             <div class="tab-pane show active" id="user_profile_settings">
-                <div class="widget">
-                    <h4 class="widget-title">Profile Settings</h4>
-                    <form id="formAccountSettings" method="POST" action="{{ route('customer.profile.update', auth()->id()) }}"
-                        enctype="multipart/form-data">
-                        @csrf
+                <form id="formAccountSettings" method="POST" action="{{ route('customer.profile.update', auth()->id()) }}"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="widget">
                         <div class="row">
+                            <div class="col-xl-6">
+                                <h4 class="widget-title">Profile</h4>
+                            </div>
 
-                            <div class="widget">
-                                <div class="row">
-
-                                    <div class="form-group col-xl-6">
-                                        <div class="media align-items-center mb-3 d-flex">
-                                            <div class="avatar-upload">
-                                                <div class="avatar-edit">
-                                                    <input name="image" type="file" id="imageUpload"
-                                                        accept=".png, .jpg, .jpeg" hidden />
-                                                    <label for="imageUpload" class="btn btn-primary" class="pencil-lable"><i
-                                                            class="fas fa-pencil-alt"></i>
-                                                    </label>
-                                                </div>
-                                                <div class="avatar-preview">
-                                                    <div id="imagePreview"
-                                                        style="background-image: url('{!! $customerProfile->image !!}');"></div>
-
-                                                </div>
-                                            </div>
-                                            <div class="media-body">
-                                                <p class="mb-0">Advocate</p>
-                                                <h5 class="mb-0">{!! $customerProfile->name !!}</h5>
-                                            </div>
+                            <div class="form-group col-xl-6">
+                                <div class="media align-items-center mb-3 d-flex">
+                                    <div class="avatar-upload">
+                                        <div class="avatar-edit">
+                                            <input name="image" type="file" id="imageUpload" accept=".png, .jpg, .jpeg"
+                                                hidden />
+                                            <label for="imageUpload" class="btn btn-primary" class="pencil-lable"><i
+                                                    class="fas fa-pencil-alt"></i>
+                                            </label>
                                         </div>
+                                        <div class="avatar-preview">
+                                            <div id="imagePreview"
+                                                style="background-image: url('{!! $customerProfile->image !!}');">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <p class="mb-0">Advocate</p>
+                                        <h5 class="mb-0">{!! $user->name !!}</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <h5 class="form-title">Personal Information</h5>
+                        </div>
                         <div class="row">
                             <div class="form-group col-xl-6">
                                 <label class="me-sm-2">Name</label>
-                                <input class="form-control" type="text" name="name"
+                                <input class="form-control black_input" type="text" name="name"
                                     value="{{ $customerProfile->name }}">
                             </div>
                             <div class="form-group col-xl-6">
                                 <label class="me-sm-2">Email</label>
-                                <input class="form-control" type="email" name="email"
+                                <input class="form-control black_input" type="email" name="email"
                                     value="{{ $customerProfile->email }}">
                             </div>
                             <div class="form-group col-xl-6">
                                 <label class="me-sm-2">Country Code</label>
-                                <input class="form-control" type="text" name="country_code" value="92">
+                                <input class="form-control black_input" type="text" name="country_code" value="92">
                             </div>
                             <div class="form-group col-xl-6">
                                 <label class="me-sm-2">Mobile Number</label>
-                                <input class="form-control no_only" type="text" value="{{ $customerProfile->phone }}"
+                                <input class="form-control black_input" type="text" value="{{ $customerProfile->phone }}"
                                     name="phone" required="">
                             </div>
                             <div class="form-group col-xl-6">
@@ -195,12 +198,12 @@
 
                             <div class="form-group col-xl-12">
                                 <label class="me-sm-2">Address</label>
-                                <input type="text" class="form-control" name="address"
+                                <input type="text" class="form-control black_input" name="address"
                                     value="{{ $customerProfile->address }}">
                             </div>
                             <div class="form-group col-xl-6">
                                 <label class="me-sm-2">Country</label>
-                                <select class="form-control form-select" name="country_id" id="country_id">
+                                <select class="form-control form-select black_input" name="country_id" id="country_id">
                                     <option value=''>Select Country</option>
                                     <option value='1'>Afghanistan(+93)</option>
                                     <option value='2'>Albania(+355)</option>
@@ -470,10 +473,10 @@
                                     type="submit">Update</button>
                             </div>
                         </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 
     <script>

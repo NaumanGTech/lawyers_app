@@ -29,4 +29,7 @@
 <!-- Main CSS -->
 <link rel="stylesheet" href="{{asset('front')}}/assets/css/style.css">
 
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropify/dist/css/dropify.min.css">
+
 @yield('injected-css')

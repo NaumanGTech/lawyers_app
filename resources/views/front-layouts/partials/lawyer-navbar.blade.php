@@ -8,11 +8,11 @@
                     <span></span>
                 </span>
             </a>
-            <a href="index.html" class="navbar-brand logo">
+            <a href="{{route('lawyer.dashboard')}}" class="navbar-brand logo">
                 {{-- <img src="{{asset('front')}}/assets/img/logo.png" class="img-fluid" alt="Logo"> --}}
                 <h2 class="text-white">Dashboard</h2>
             </a>
-            <a href="index.html" class="navbar-brand logo-small">
+            <a href="{{route('lawyer.dashboard')}}" class="navbar-brand logo-small">
                 {{-- <img src="{{asset('front')}}/assets/img/logo-icon.png" class="img-fluid" alt="Logo"> --}}
                 <h2 class="text-white">Dashboard</h2>
             </a>
@@ -21,7 +21,7 @@
         <ul class="nav header-navbar-rht">
 
             <li class="nav-item desc-list">
-                <a href="add-service.html" class="nav-link header-login">
+                <a href="{{route('lawyer.service.create', 0)}}" class="nav-link header-login">
                     <i class="fas fa-plus-circle me-1"></i> <span>Post a Service</span>
                 </a>
             </li>

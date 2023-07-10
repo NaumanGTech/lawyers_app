@@ -16,4 +16,26 @@
 <!-- Custom JS -->
 <script src="{{ asset('front') }}/assets/js/script.js"></script>
 
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/dropify/dist/js/dropify.min.js"></script>
+
+<script src="{{ asset('front') }}/assets/plugins/dist/js/bs-dropzone.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.degree-dropify').dropify({
+            messages: {
+                default: 'Upload Document',
+                replace: 'Drag and drop or click to replace',
+                remove: 'Remove',
+                error: 'Error while uploading file',
+            },
+            error: {
+                fileSize: 'The file size is too big.',
+                fileExtension: 'The selected file format is not allowed.',
+            },
+        });
+    });
+</script>
+
 @yield('injected-scripts')

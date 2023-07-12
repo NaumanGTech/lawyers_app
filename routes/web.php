@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LawyerRegisterController;
 use App\Http\Controllers\Auth\UsersLoginController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
@@ -61,6 +62,24 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/service/store/{id}', [DashboardController::class, 'service_store'])->name('service.store');
     Route::get('/service/detail/{id}', [DashboardController::class, 'service_detail'])->name('service.details');
     Route::post('/service/delete/{id}', [DashboardController::class, 'service_delete'])->name('service.delete');
+
+    Route::get('admin/order/index', [DashboardController::class, 'order_index'])->name('admin.order.index');
+    Route::get('admin/order/form/{id}', [DashboardController::class, 'order_form'])->name('admin.order.form');
+    Route::post('admin/order/store/{id}', [DashboardController::class, 'order_store'])->name('admin.order.store');
+    Route::get('admin/order/detail/{id}', [DashboardController::class, 'order_detail'])->name('admin.order.details');
+    Route::post('admin/order/delete/{id}', [DashboardController::class, 'order_delete'])->name('admin.order.delete');
+
+    Route::get('admin/general-setting/index', [DashboardController::class, 'general_setting_index'])->name('admin.general.setting.index');
+    Route::get('admin/general-setting/form/{id}', [DashboardController::class, 'general_setting_form'])->name('admin.general.setting.form');
+    Route::post('admin/general-setting/store/{id}', [DashboardController::class, 'general_setting_store'])->name('admin.general.setting.store');
+    Route::get('admin/general-setting/detail/{id}', [DashboardController::class, 'general_setting_detail'])->name('admin.general.setting.details');
+    Route::post('admin/general-setting/delete/{id}', [DashboardController::class, 'general_setting_delete'])->name('admin.general.setting.delete');
+
+    Route::get('admin/transaction/index', [TransactionController::class, 'transaction_index'])->name('admin.transaction.index');
+    // Route::get('admin/transaction/form/{id}', [TransactionController::class, 'transaction_form'])->name('admin.transaction.form');
+    // Route::post('admin/transaction/store/{id}', [TransactionController::class, 'transaction_store'])->name('admin.transaction.store');
+    Route::get('admin/transaction/detail/{id}', [TransactionController::class, 'transaction_detail'])->name('admin.transaction.details');
+    Route::post('admin/transaction/delete/{id}', [TransactionController::class, 'transaction_delete'])->name('admin.transaction.delete');
 });
 
 

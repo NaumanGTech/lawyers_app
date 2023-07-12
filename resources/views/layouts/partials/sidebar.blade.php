@@ -8,17 +8,28 @@
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
-                <li class="{{ (request()->is('admin/dashboard*')) ? 'active' : '' }}">
+                <li class="{{ request()->is('admin/dashboard*') ? 'active' : '' }}">
                     <a href="{{ route('admin.dashboard') }}"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
                 </li>
-                <li class="{{ (request()->is('all-users*')) ? 'active' : '' }}">
+                <li class="{{ request()->is('all-users*') ? 'active' : '' }}">
                     <a href="{{ route('all.users') }}"><i class="fas fa-columns"></i> <span>All Users</span></a>
                 </li>
-                <li class="{{ (request()->is('category/index*')) ? 'active' : '' }}">
+                <li class="{{ request()->is('category/index*') ? 'active' : '' }}">
                     <a href="{{ route('category.index') }}"><i class="fas fa-columns"></i> <span>Categories</span></a>
                 </li>
-                <li class="{{ (request()->is('service/index*')) ? 'active' : '' }}">
+                <li class="{{ request()->is('service/index*') ? 'active' : '' }}">
                     <a href="{{ route('service.index') }}"><i class="fas fa-columns"></i> <span>Services</span></a>
+                </li>
+                <li class="{{ request()->is('admin/order/index*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.order.index') }}"><i class="fas fa-columns"></i> <span>Order</span></a>
+                </li>
+                <li class="{{ request()->is('admin/general-setting/index*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.general.setting.index') }}"><i class="fas fa-columns"></i> <span>General
+                            Setting</span></a>
+                </li>
+                <li class="{{ request()->is('admin/transaction/index*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.transaction.index') }}"><i class="fas fa-columns"></i>
+                        <span>Transaction</span></a>
                 </li>
                 {{-- <li>
                     <a href="categories.html"><i class="fas fa-layer-group"></i> <span>Categories</span></a>

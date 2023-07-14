@@ -17,4 +17,9 @@ class Category extends Model
     {
         return asset('uploads/user') . '/' . $this->attributes['image'];
     }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'services', 'id', 'categories_id');
+    }
 }

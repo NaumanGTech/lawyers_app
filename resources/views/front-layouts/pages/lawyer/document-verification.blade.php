@@ -120,7 +120,7 @@
                             <div class="row">
                                 <div class="col-6 mb-4">
                                     <label for="degree"><b>Upload Your Law Degree Here</b></label>
-                                    <input type="file" name="degree" class="degree-dropify"
+                                    <input type="file" name="degree" class="dropify"
                                         data-default-file="{{ asset('front') }}/assets/img/document.png">
                                 </div>
                                 <div class="col-6 d-flex justify-content-end">
@@ -177,7 +177,7 @@
     </script>
     <script>
         $(document).ready(function() {
-            $('.degree-dropify').dropify({
+            $('.dropify').dropify({
                 messages: {
                     default: 'Upload Document',
                     replace: 'Drag and drop or click to replace',

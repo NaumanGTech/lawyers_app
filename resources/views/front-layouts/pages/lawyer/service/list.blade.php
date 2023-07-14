@@ -12,43 +12,59 @@
     </style>
 @endsection
 @section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-            <div class="row">
-                <div class="col-md-12 d-flex">
-                    <!-- Payments -->
-                    <div class="card card-table flex-fill boxShadowClass">
-                        <div class="card-header">
-                            <h4 class="card-title">All Services</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-center">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>image</th>
-                                            <th>title</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($data as $row)
-                                            <tr>
-                                                <td>{{ $row->id }}</td>
-                                                <td><img src="{{ $row->image }}" alt="Service Image"></td>
-                                                <td>{{ $row->title }}</td>
+    <div class="row">
+        <div class="col-md-12 d-flex">
+            <!-- Payments -->
+            <div class="card card-table flex-fill boxShadowClass">
+                <div class="card-header">
+                    <h4 class="card-title">All Services</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-center">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Categories</th>
+                                    <th>Amount</th>
+                                    <th>Location</th>
+                                    <th>Starting Day</th>
+                                    <th>Ending Day</th>
+                                    <th>Starting Time</th>
+                                    <th>Ending Time</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data as $row)
+                                    <tr>
+                                        <td>{{ $row->id }}</td>
+                                        <td style="width: 10%;"><img src="{{ $row->cover_image }}" class="w-100"
+                                                alt="Service Image"></td>
+                                        <td>{{ $row->title }}</td>
+                                        <td>
+                                            @foreach ($row->categories as $category)
+                                                <p>{{$category->title}}</p>
+                                            @endforeach
+                                        </td>
+                                        <td>{{ $row->amount }}</td>
+                                        <td>{{ $row->location }}</td>
+                                        <td>{{ $row->start_day }}</td>
+                                        <td>{{ $row->end_day }}</td>
+                                        <td>{{ $row->start_time }}</td>
+                                        <td>{{ $row->end_time }}</td>
 
-                                            </tr>
-                                        @endforeach
+                                    </tr>
+                                @endforeach
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- Payments -->
                 </div>
             </div>
+            <!-- Payments -->
         </div>
     </div>
 @endsection

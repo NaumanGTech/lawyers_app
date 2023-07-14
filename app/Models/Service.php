@@ -9,13 +9,22 @@ class Service extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id',
-        'image',
-        'title'
+        'title', 'user_id', 'location', 'amount', 'start_day', 'end_day', 'start_time', 'end_time', 'add_extra_day', 'extra_day', 'extra_day_start_time', 'extra_day_end_time', 'cover_image'
     ];
 
-    public function getImageAttribute()
+    protected $casts = [
+        'categories_id' => 'array',
+    ];
+
+    public function getCoverImageAttribute()
     {
-        return asset('uploads/user') . '/' . $this->attributes['image'];
+        if ($this->attributes['cover_image'] == null) {
+            return asset('front/assets/img/category/Category5.jpg');
+        }
+        return asset('uploads/lawyer/service') . '/' . $this->attributes['cover_image'];
+    }
+
+    public function categories(){
+        return $this->belongsToMany(Category::class, 'services', 'categories_id', 'id');
     }
 }

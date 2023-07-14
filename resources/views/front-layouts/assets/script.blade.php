@@ -23,7 +23,7 @@
 
 <script>
     $(document).ready(function() {
-        $('.degree-dropify').dropify({
+        $('.dropify').dropify({
             messages: {
                 default: 'Upload Document',
                 replace: 'Drag and drop or click to replace',

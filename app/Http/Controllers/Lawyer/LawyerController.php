@@ -97,7 +97,7 @@ class LawyerController extends Controller
 
         if ($request->file()) {
             $imageName = rand(0, 9999). time(). '.' . $request->image->extension();
-            $request->file('image')->move(public_path('uploads/user'), $imageName);
+            $request->file('image')->move(public_path('uploads/lawyer'), $imageName);
             $user->image = $imageName;
         }
         $user->update();

@@ -13,8 +13,20 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
             $table->string('title')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->string('location')->nullable();
+            $table->string('amount')->nullable();
+            $table->string('categories_id')->nullable();
+            $table->string('start_day')->nullable();
+            $table->string('end_day')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('end_time')->nullable();
+            $table->string('add_extra_day')->nullable();
+            $table->string('extra_day')->nullable();
+            $table->string('extra_day_start_time')->nullable();
+            $table->string('extra_day_end_time')->nullable();
+            $table->string('cover_image')->nullable();
             $table->timestamps();
         });
     }

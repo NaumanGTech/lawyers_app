@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\UsersLoginController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\VerificationController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
@@ -80,6 +81,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Route::post('admin/transaction/store/{id}', [TransactionController::class, 'transaction_store'])->name('admin.transaction.store');
     Route::get('admin/transaction/detail/{id}', [TransactionController::class, 'transaction_detail'])->name('admin.transaction.details');
     Route::post('admin/transaction/delete/{id}', [TransactionController::class, 'transaction_delete'])->name('admin.transaction.delete');
+
+    Route::get('admin/lawyers/submitted/docs', [\App\Http\Controllers\Admin\VerificationController::class, 'index'])->name('admin.lawyer.documents');
+    Route::get('admin/notify', [\App\Http\Controllers\Admin\VerificationController::class, 'notify'])->name('admin.notify.lawyer');
+
+    Route::get('/admin/block/user', [VerificationController::class, 'blockUser'])->name('admin.block.user');
 });
 
 

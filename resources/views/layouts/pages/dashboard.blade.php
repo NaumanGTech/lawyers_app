@@ -11,6 +11,15 @@
                     </div>
                 </div>
             </div>
+            @if (auth()->user()->notifications)
+                @foreach (auth()->user()->unreadnotifications as $notification)
+                    {{-- <div id="flash-message" class="mb-3"> --}}
+                    <div class="bg-blue-300 text-black p-3 m-2">
+                        {{ $notification->data['name'] }} documents are verified.
+                    </div>
+                    {{-- </div> --}}
+                @endforeach
+            @endif
             <!-- /Page Header -->
 
             <div class="row">
@@ -103,7 +112,7 @@
                                                 <span class="table-avatar">
                                                     <a href="#" class="avatar avatar-xs me-2">
                                                         <img class="avatar-img rounded-circle" alt=""
-                                                            src="{{asset('admin')}}/assets/img/customer/user-02.jpg">
+                                                            src="{{ asset('admin') }}/assets/img/customer/user-02.jpg">
                                                     </a>
                                                     <a href="javascript:void(0);">Nancy Olson</a>
                                                 </span>
@@ -112,7 +121,7 @@
                                                 <span class="table-avatar">
                                                     <a href="#" class="avatar avatar-xs me-2">
                                                         <img class="avatar-img rounded-circle" alt=""
-                                                            src="{{asset('admin')}}/assets/img/provider/provider-02.jpg">
+                                                            src="{{ asset('admin') }}/assets/img/provider/provider-02.jpg">
                                                     </a>
                                                     <a href="javascript:void(0);">Matthew Garcia</a>
                                                 </span>
@@ -129,7 +138,7 @@
                                                 <span class="table-avatar">
                                                     <a href="#" class="avatar avatar-xs me-2">
                                                         <img class="avatar-img rounded-circle" alt=""
-                                                            src="{{asset('admin')}}/assets/img/customer/user-03.jpg">
+                                                            src="{{ asset('admin') }}/assets/img/customer/user-03.jpg">
                                                     </a>
                                                     <a href="javascript:void(0);">Ramona Kingsley</a>
                                                 </span>
@@ -138,7 +147,7 @@
                                                 <span class="table-avatar">
                                                     <a href="#" class="avatar avatar-xs me-2">
                                                         <img class="avatar-img rounded-circle" alt=""
-                                                            src="{{asset('admin')}}/assets/img/provider/provider-03.jpg">
+                                                            src="{{ asset('admin') }}/assets/img/provider/provider-03.jpg">
                                                     </a>
                                                     <a href="javascript:void(0);">Yolanda Potter</a>
                                                 </span>

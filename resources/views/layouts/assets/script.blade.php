@@ -1,6 +1,3 @@
-<!-- jQuery -->
-<script src="{{ asset('admin') }}/assets/js/jquery-3.6.0.min.js"></script>
-
 <!-- Bootstrap Core JS -->
 <script src="{{ asset('admin') }}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 

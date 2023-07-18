@@ -95,7 +95,7 @@
                     <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
                         <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="contact-us.html">Contact Us</a></li>
+                        <li><a href="{{route('contact.us')}}">Contact Us</a></li>
                         <li><a href="faq.html">Faq</a></li>
                         <li><a href="#">Terms & Conditions</a></li>
                         <li><a href="#">Privacy Policy</a></li>

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersLoginController extends Controller
 {
@@ -19,7 +19,7 @@ class UsersLoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+     */
 
     use AuthenticatesUsers;
 
@@ -53,6 +53,9 @@ class UsersLoginController extends Controller
                 return redirect()->route('lawyer.dashboard');
             } else if ($user->role == 'user') {
                 return redirect()->route('customer.dashboard');
+            } else {
+                Auth::logout();
+                return redirect()->back()->withErrors('You have entered an invalid email/password, Please try again');
             }
         } else {
             return redirect()->back()->withErrors('You have entered an invalid email/password, Please try again');

@@ -37,6 +37,8 @@ Route::get('/categories/{filter}', [FrontController::class, 'categories'])->name
 Route::get('/lawyers/{category}', [FrontController::class, 'lawyers_with_category'])->name('lawyers.with.category');
 Route::get('/lawyers/online/{filter}', [FrontController::class, 'lawyers_online'])->name('lawyers.online');
 
+Route::get('/contact-us', [FrontController::class, 'contact_us'])->name('contact.us');
+Route::post('/contact-us/submit', [FrontController::class, 'support_msg'])->name('contact.us.submit');
 Route::get('/chat', [PusherController::class, 'index'])->name('chat');
 Route::post('/broadcast', [PusherController::class, 'broadcast'])->name('broadcast');
 Route::post('/receive', [PusherController::class, 'receive'])->name('receive');

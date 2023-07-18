@@ -11,15 +11,6 @@
                     </div>
                 </div>
             </div>
-            @if (auth()->user()->notifications)
-                @foreach (auth()->user()->unreadnotifications as $notification)
-                    {{-- <div id="flash-message" class="mb-3"> --}}
-                    <div class="bg-blue-300 text-black p-3 m-2">
-                        {{ $notification->data['name'] }} documents are verified.
-                    </div>
-                    {{-- </div> --}}
-                @endforeach
-            @endif
             <!-- /Page Header -->
 
             <div class="row">

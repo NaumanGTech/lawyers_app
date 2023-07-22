@@ -30,7 +30,7 @@
                                     <a href="javascript:void(0);">
                                         <img src="{{ asset('front') }}/assets/img/provider/provider-01.jpg" alt="">
                                     </a>
-                                    <span class="service-price">$25</span>
+                                    <span class="service-price">Rs.2500</span>
                                 </div>
                                 <div class="cate-list">
                                     <a class="bg-yellow" href="">Glass</a>
@@ -66,7 +66,8 @@
                                         }
                                         ?>
 
-                                        <form action="{{ route('order.store', $update_id) }}" method="POST">
+                                        {{-- <form action="{{ route('order.store', $update_id) }}" method="POST"> --}}
+                                            <form action="{{ route('payment', $update_id) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="lawyer_id" value="{{ $lawyer->id }}"
                                                 id="">

@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Lawyer\LawyerController;
 use App\Http\Controllers\Lawyer\ServiceController;
 use App\Http\Controllers\PusherController;
+use App\Http\Controllers\StripePaymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -133,6 +134,13 @@ Route::middleware(['auth', 'customer'])->group(function () {
     Route::post('/order/delete/{id}', [OrderController::class, 'order_delete'])->name('order.delete');
     // update order status
     Route::post('/order/status', [OrderController::class, 'order_status'])->name('order.status');
+});
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/payment', [StripePaymentController::class, 'payment'])->name('payment');
+    Route::post('/', [StripePaymentController::class, 'call']);
+
 });
 
 

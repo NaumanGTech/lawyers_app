@@ -62,7 +62,7 @@ class User extends Authenticatable
         if ($this->attributes['image'] == null) {
             return asset('uploads/user.jpg');
         }
-        return asset('uploads/user') . '/' . $this->attributes['image'];
+        return asset('uploads/lawyer') . '/' . $this->attributes['image'];
     }
 
     public function isCustomer()

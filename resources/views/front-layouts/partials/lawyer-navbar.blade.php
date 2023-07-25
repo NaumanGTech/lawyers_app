@@ -39,7 +39,8 @@
                     </div>
                     <div class="noti-content">
                         <ul class="notification-list">
-                            @if (auth()->user()->notifications)
+                            {{-- {{dd(auth()->user()->notification)}} --}}
+                            @if (auth()->user()->notifications->isEmpty())
                                 @foreach (auth()->user()->unreadnotifications as $notification)
                                     {{-- <div id="flash-message" class="mb-3"> --}}
                                     <li class="notification-message">

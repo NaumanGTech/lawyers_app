@@ -25,4 +25,8 @@ class HomeController extends Controller
     {
         return view('layouts.pages.dashboard');
     }
+
+    public function chat(){
+        return view('front-layouts.pages.chat.chat');
+    }
 }

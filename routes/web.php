@@ -49,7 +49,7 @@ Route::get('image/update', function () {
 });
 
 Auth::routes();
-
+Route::get('chat', [HomeController::class, 'chat'])->name('chat');
 // ADMIN PART
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');

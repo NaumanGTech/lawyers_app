@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Support;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -11,7 +13,10 @@ class FrontController extends Controller
 {
     public function index()
     {
-        return view('front-layouts.pages.home');
+        $categories=Category::get();
+        $cities=User::where('role','lawyer')->get();
+
+        return view('front-layouts.pages.home',get_defined_vars());
     }
 
     public function categories()

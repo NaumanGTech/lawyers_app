@@ -1,5 +1,58 @@
 @extends('front-layouts.master-layout')
 @section('content')
+<style>
+    .dropbtn {
+      background-color: #04AA6D;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .dropbtn:hover, .dropbtn:focus {
+      background-color: #3e8e41;
+    }
+    
+    #myInput {
+      box-sizing: border-box;
+      background-image: url('searchicon.png');
+      background-position: 14px 12px;
+      background-repeat: no-repeat;
+      font-size: 16px;
+      padding: 14px 20px 12px 45px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    #myInput:focus {outline: 3px solid #ddd;}
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f6f6f6;
+      min-width: 230px;
+      overflow: auto;
+      border: 1px solid #ddd;
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown a:hover {background-color: #ddd;}
+    
+    .show {display: block;}
+    </style>
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="layer">
@@ -15,17 +68,39 @@
                                     <div class="search-input line">
                                         <i class="fas fa-tv bficon"></i>
                                         <div class="form-group mb-0">
-                                            <input type="text" class="form-control"
-                                                placeholder="What are you looking for?">
+                                            {{-- <input type="text" class="form-control"
+                                                placeholder="What are you looking for?"> --}}
+                                                <select name="select_category" id="" class="form-control mt-2 text-center" style="border: #f6f6f6">
+                                                    <option value="">Select Location</option>
+                                                    @foreach ($categories as $category)
+                                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                                    @endforeach
+                                                  
+                                                  
+    
+                                                </select>
                                         </div>
                                     </div>
                                     <div class="search-input">
-                                        <i class="fas fa-location-arrow bficon"></i>
+                                        <i class="fas fa-location-arrow bficon">
+                                           
+                                        </i>
                                         <div class="form-group mb-0">
-                                            <input type="text" class="form-control" placeholder="Your Location">
-                                            <a class="current-loc-icon current_location" href="javascript:void(0);"><i
-                                                    class="fas fa-crosshairs"></i></a>
+                                            {{-- <input type="text" class="form-control" placeholder="Your Location"> --}}
+                                            <select name="" id="" class="form-control mt-2 text-center" style="border: #f6f6f6">
+                                                <option value="">Select Location</option>
+                                                @foreach ($cities->unique('city') as $city)
+                                                <option value="{{$city->city}}">{{$city->city}}</option>
+                                                @endforeach
+                                              
+                                              
+
+                                            </select>
+                                            <a class="current-loc-icon current_location" href="javascript:void(0);"><i class="fas fa-crosshairs">
+                                                
+                                                </i></a>
                                         </div>
+
                                     </div>
                                     <div class="search-btn">
                                         <button class="btn search_service" type="submit">Search</button>
@@ -61,66 +136,19 @@
                     </div>
                     <div class="catsec">
                         <div class="row">
+                            @foreach ($categories as $category)
                             <div class="col-lg-4 col-md-6">
                                 <a href="search.html">
                                     <div class="cate-widget aos">
-                                        <img src="{{ asset('front') }}/assets/img/category/category1.jpg" alt="">
+                                        <img src="{{$category->image}}" alt="">
                                         <div class="cate-title">
-                                            <h3> Prosecutor</h3>
+                                            <h3> {{$category->title}}</h3>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="search.html">
-                                    <div class="cate-widget aos">
-                                        <img src="{{ asset('front') }}/assets/img/category/Category2.jpg" alt="">
-                                        <div class="cate-title">
-                                            <h3> Public Defender</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="search.html">
-                                    <div class="cate-widget aos">
-                                        <img src="{{ asset('front') }}/assets/img/category/category3.jpg" alt="">
-                                        <div class="cate-title">
-                                            <h3> Judge</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="search.html">
-                                    <div class="cate-widget aos">
-                                        <img src="{{ asset('front') }}/assets/img/category/category4.jpg" alt="">
-                                        <div class="cate-title">
-                                            <h3> Immigration law</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="search.html">
-                                    <div class="cate-widget aos">
-                                        <img src="{{ asset('front') }}/assets/img/category/category5.jpg" alt="">
-                                        <div class="cate-title">
-                                            <h3> Corporate lawyer</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="search.html">
-                                    <div class="cate-widget aos">
-                                        <img src="{{ asset('front') }}/assets/img/category/category6.avif" alt="">
-                                        <div class="cate-title">
-                                            <h3> Family law</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            @endforeach
+                          
                         </div>
                     </div>
                 </div>
@@ -245,153 +273,19 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-4 cities_button">
+                    @foreach ($cities->unique('city') as $city)
                     <a href="#">
+                     
                         <button class="btn btn-primary my-2 w-100">
-                            Islamabad
+                            {{$city->city}}
                         </button>
+                      
+                       
                     </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Lahore
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Multan
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Bahawalpur
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Khanpur
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Rahim Yar Khan
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Karachi
-                        </button>
-                    </a>
+                    @endforeach
+                  
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-4 cities_button">
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Laiyah
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Sawat
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Faislabad
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Jhang
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Murree
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Kashmor
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Khibar
-                        </button>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-4 cities_button">
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Laiyah
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Sawat
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Faislabad
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Jhang
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Murree
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Kashmor
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Khibar
-                        </button>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-4 cities_button">
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Islamabad
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Islamabad
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Islamabad
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Islamabad
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Islamabad
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Islamabad
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button class="btn btn-primary my-2 w-100">
-                            Islamabad
-                        </button>
-                    </a>
-                </div>
+              
             </div>
         </div>
     </section>
@@ -440,6 +334,29 @@
         </div>
     </section>
     <!-- /How It Works -->
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        function filterFunction() {
+          var input, filter, ul, li, a, i;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          div = document.getElementById("myDropdown");
+          a = div.getElementsByTagName("a");
+          for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              a[i].style.display = "";
+            } else {
+              a[i].style.display = "none";
+            }
+          }
+        }
+        </script>
 @endsection
 
 @section('injected-scripts')

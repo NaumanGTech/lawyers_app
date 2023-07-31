@@ -23,6 +23,7 @@ class User extends Authenticatable
         'email',
         'phone',
         'role',
+        'category_id',
         'password',
         'date_of_birth',
         'gender',
@@ -73,5 +74,9 @@ class User extends Authenticatable
     public function isLawyer()
     {
         return $this->role === 'lawyer';
+    }
+
+    public function category(){
+        return $this->hasOne(Category::class,'id','category_id');
     }
 }

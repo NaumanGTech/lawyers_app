@@ -50,8 +50,15 @@
                                     <div class="filter-list">
                                         <h4 class="filter-title">Categories</h4>
                                         <select class="form-control form-control selectbox select form-select">
-                                            <option><a href="provider-dashboard.html">Environmental law</a></option>
-                                            <option><a href="my-services.html">Real estate lawyer</a></option>
+                                            @foreach ($categories as $category)
+                                                <a href="{{ route('lawyers.online', $category->id) }}">
+                                                    <option value="{{$category->id}}">
+                                                        {{ $category->title }}
+                                                    </option>
+                                                </a>
+                                            @endforeach
+
+                                            {{-- <option><a href="my-services.html">Real estate lawyer</a></option>
                                             <option><a href="provider-bookings.html">Constitutional law</a></option>
                                             <option><a href="provider-settings.html">Property law</a></option>
                                             <option><a href="provider-wallet.html">Entertainment law</a></option>
@@ -72,7 +79,7 @@
                                             <option><a href="provider-bookings.html">Immigration law</a></option>
                                             <option><a href="provider-settings.html">Labour law</a></option>
                                             <option><a href="provider-wallet.html">Personal injury lawyer</a></option>
-                                            <option><a href="provider-subscription.html">Corporate lawyer</a></option>
+                                            <option><a href="provider-subscription.html">Corporate lawyer</a></option> --}}
                                         </select>
                                     </div>
                                     <div class="filter-list">
@@ -89,287 +96,40 @@
                 <div class="col-lg-9">
                     <div>
                         <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <a href="{{ route('lawyers.with.category', ['category' => 'all']) }}">
-                                    <div class="cate-widget">
-                                        <img src="{{ asset('front') }}/assets/img/customer/lawyer-01.png" alt="">
-                                        <div class="cate-title online">
-                                            <h3>Category One</h3>
-                                            <div class="lawyerDetails">
-                                                <p class="mb-1">Name of the Lawyer</p>
-                                                <p class="mb-1">Masters In Degree</p>
-                                                <ul>
-                                                    <li style="color: white">Certificate 1</li>
-                                                    <li style="color: white">Certificate 2</li>
-                                                    <li style="color: white">Certificate 3</li>
-                                                </ul>
-                                            </div>
-                                            <div class="w-100 d-flex justify-content-between">
-                                                <div class="price text-light w-100">
-                                                    <span>Rs 2000</span>
+                            @foreach ($lawyersByCategories as $lawyersByCategory)
+                                <div class="col-lg-4 col-md-6">
+                                    <a href="{{ route('lawyers.with.category',$lawyersByCategory->id) }}">
+                                        <div class="cate-widget">
+                                            <img src="{{ asset('front') }}/assets/img/customer/lawyer-01.png"
+                                                alt="">
+                                            <div class="cate-title online">
+                                                <h3>{{ $lawyersByCategory->category->title }}</h3>
+                                                <div class="lawyerDetails">
+                                                    <p class="mb-1">{{ $lawyersByCategory->name }}</p>
+                                                    <p class="mb-1">Masters In {{ $lawyersByCategory->degree }}</p>
+                                                    <ul>
+                                                        <li style="color: white">Certificate 1</li>
+                                                        <li style="color: white">Certificate 2</li>
+                                                        <li style="color: white">Certificate 3</li>
+                                                    </ul>
                                                 </div>
-                                                <div class="OnlineLawyersRatings text-end">
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="{{ route('lawyers.with.category', ['category' => 'all']) }}">
-                                    <div class="cate-widget">
-                                        <img src="{{ asset('front') }}/assets/img/customer/user-01.jpg" alt="">
-                                        <div class="cate-title online">
-                                            <h3>Category One</h3>
-                                            <div class="lawyerDetails">
-                                                <p class="mb-1">Name of the Lawyer</p>
-                                                <p class="mb-1">Masters In Degree</p>
-                                                <ul>
-                                                    <li style="color: white">Certificate 1</li>
-                                                    <li style="color: white">Certificate 2</li>
-                                                    <li style="color: white">Certificate 3</li>
-                                                </ul>
-                                            </div>
-                                            <div class="w-100 d-flex justify-content-between">
-                                                <div class="price text-light w-100">
-                                                    <span>Rs 2000</span>
-                                                </div>
-                                                <div class="OnlineLawyersRatings text-end">
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="{{ route('lawyers.with.category', ['category' => 'all']) }}">
-                                    <div class="cate-widget">
-                                        <img src="{{ asset('front') }}/assets/img/customer/user-02.jpg" alt="">
-                                        <div class="cate-title online">
-                                            <h3>Category One</h3>
-                                            <div class="lawyerDetails">
-                                                <p class="mb-1">Name of the Lawyer</p>
-                                                <p class="mb-1">Masters In Degree</p>
-                                                <ul>
-                                                    <li style="color: white">Certificate 1</li>
-                                                    <li style="color: white">Certificate 2</li>
-                                                    <li style="color: white">Certificate 3</li>
-                                                </ul>
-                                            </div>
-                                            <div class="w-100 d-flex justify-content-between">
-                                                <div class="price text-light w-100">
-                                                    <span>Rs 2000</span>
-                                                </div>
-                                                <div class="OnlineLawyersRatings text-end">
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="{{ route('lawyers.with.category', ['category' => 'all']) }}">
-                                    <div class="cate-widget">
-                                        <img src="{{ asset('front') }}/assets/img/customer/user-03.jpg" alt="">
-                                        <div class="cate-title online">
-                                            <h3>Category One</h3>
-                                            <div class="lawyerDetails">
-                                                <p class="mb-1">Name of the Lawyer</p>
-                                                <p class="mb-1">Masters In Degree</p>
-                                                <ul>
-                                                    <li style="color: white">Certificate 1</li>
-                                                    <li style="color: white">Certificate 2</li>
-                                                    <li style="color: white">Certificate 3</li>
-                                                </ul>
-                                            </div>
-                                            <div class="w-100 d-flex justify-content-between">
-                                                <div class="price text-light w-100">
-                                                    <span>Rs 2000</span>
-                                                </div>
-                                                <div class="OnlineLawyersRatings text-end">
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="{{ route('lawyers.with.category', ['category' => 'all']) }}">
-                                    <div class="cate-widget">
-                                        <img src="{{ asset('front') }}/assets/img/customer/user-04.jpg" alt="">
-                                        <div class="cate-title online">
-                                            <h3>Category One</h3>
-                                            <div class="lawyerDetails">
-                                                <p class="mb-1">Name of the Lawyer</p>
-                                                <p class="mb-1">Masters In Degree</p>
-                                                <ul>
-                                                    <li style="color: white">Certificate 1</li>
-                                                    <li style="color: white">Certificate 2</li>
-                                                    <li style="color: white">Certificate 3</li>
-                                                </ul>
-                                            </div>
-                                            <div class="w-100 d-flex justify-content-between">
-                                                <div class="price text-light w-100">
-                                                    <span>Rs 2000</span>
-                                                </div>
-                                                <div class="OnlineLawyersRatings text-end">
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="{{ route('lawyers.with.category', ['category' => 'all']) }}">
-                                    <div class="cate-widget">
-                                        <img src="{{ asset('front') }}/assets/img/customer/user-05.jpg" alt="">
-                                        <div class="cate-title online">
-                                            <h3>Category One</h3>
-                                            <div class="lawyerDetails">
-                                                <p class="mb-1">Name of the Lawyer</p>
-                                                <p class="mb-1">Masters In Degree</p>
-                                                <ul>
-                                                    <li style="color: white">Certificate 1</li>
-                                                    <li style="color: white">Certificate 2</li>
-                                                    <li style="color: white">Certificate 3</li>
-                                                </ul>
-                                            </div>
-                                            <div class="w-100 d-flex justify-content-between">
-                                                <div class="price text-light w-100">
-                                                    <span>Rs 2000</span>
-                                                </div>
-                                                <div class="OnlineLawyersRatings text-end">
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="{{ route('lawyers.with.category', ['category' => 'all']) }}">
-                                    <div class="cate-widget">
-                                        <img src="{{ asset('front') }}/assets/img/customer/lawyer-01.png" alt="">
-                                        <div class="cate-title online">
-                                            <h3>Category One</h3>
-                                            <div class="lawyerDetails">
-                                                <p class="mb-1">Name of the Lawyer</p>
-                                                <p class="mb-1">Masters In Degree</p>
-                                                <ul>
-                                                    <li style="color: white">Certificate 1</li>
-                                                    <li style="color: white">Certificate 2</li>
-                                                    <li style="color: white">Certificate 3</li>
-                                                </ul>
-                                            </div>
-                                            <div class="w-100 d-flex justify-content-between">
-                                                <div class="price text-light w-100">
-                                                    <span>Rs 2000</span>
-                                                </div>
-                                                <div class="OnlineLawyersRatings text-end">
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="{{ route('lawyers.with.category', ['category' => 'all']) }}">
-                                    <div class="cate-widget">
-                                        <img src="{{ asset('front') }}/assets/img/customer/lawyer-01.png" alt="">
-                                        <div class="cate-title online">
-                                            <h3>Category One</h3>
-                                            <div class="lawyerDetails">
-                                                <p class="mb-1">Name of the Lawyer</p>
-                                                <p class="mb-1">Masters In Degree</p>
-                                                <ul>
-                                                    <li style="color: white">Certificate 1</li>
-                                                    <li style="color: white">Certificate 2</li>
-                                                    <li style="color: white">Certificate 3</li>
-                                                </ul>
-                                            </div>
-                                            <div class="w-100 d-flex justify-content-between">
-                                                <div class="price text-light w-100">
-                                                    <span>Rs 2000</span>
-                                                </div>
-                                                <div class="OnlineLawyersRatings text-end">
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <a href="{{ route('lawyers.with.category', ['category' => 'all']) }}">
-                                    <div class="cate-widget">
-                                        <img src="{{ asset('front') }}/assets/img/customer/lawyer-01.png" alt="">
-                                        <div class="cate-title online">
-                                            <h3>Category One</h3>
-                                            <div class="lawyerDetails">
-                                                <p class="mb-1">Name of the Lawyer</p>
-                                                <p class="mb-1">Masters In Degree</p>
-                                                <ul>
-                                                    <li style="color: white">Certificate 1</li>
-                                                    <li style="color: white">Certificate 2</li>
-                                                    <li style="color: white">Certificate 3</li>
-                                                </ul>
-                                            </div>
-                                            <div class="w-100 d-flex justify-content-between">
-                                                <div class="price text-light w-100">
+                                                <div class="w-100 d-flex justify-content-between">
                                                     <div class="price text-light w-100">
                                                         <span>Rs 2000</span>
                                                     </div>
-                                                </div>
-                                                <div class="OnlineLawyersRatings text-end">
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
+                                                    <div class="OnlineLawyersRatings text-end">
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="pagination">
                             <ul>

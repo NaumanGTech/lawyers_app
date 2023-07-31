@@ -33,8 +33,11 @@
 
                     <a href="{{ route('categories', ['filter' => 'all']) }}">Categories<i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
-                        <li><a href="provider-dashboard.html">Environmental law</a></li>
-                        <li><a href="my-services.html">Real estate lawyer</a></li>
+                        @foreach ($categories as $category )
+                        <li><a href="{{route('lawyers.online', $category->id)}}">{{$category->title}}</a></li>
+                        @endforeach
+                      
+                        {{-- <li><a href="my-services.html">Real estate lawyer</a></li>
                         <li><a href="provider-bookings.html">Constitutional law</a></li>
                         <li><a href="provider-settings.html">Property law</a></li>
                         <li><a href="provider-wallet.html">Entertainment law</a></li>
@@ -55,7 +58,7 @@
                         <li><a href="provider-bookings.html">Immigration law</a></li>
                         <li><a href="provider-settings.html">Labour law</a></li>
                         <li><a href="provider-wallet.html">Personal injury lawyer</a></li>
-                        <li><a href="provider-subscription.html">Corporate lawyer</a></li>
+                        <li><a href="provider-subscription.html">Corporate lawyer</a></li> --}}
                     </ul>
                 </li>
                 <li class="has-submenu {{ (request()->is('lawyers/online*')) ? 'active' : '' }}">

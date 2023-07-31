@@ -25,14 +25,14 @@
                     <div class="col-lg-2 col md-2 col-sm-12">
                         <div class="lawyer-img d-flex justify-content-center align-items-center"
                             style="border-radius: 50%; width: 100%; overflow: hidden;">
-                            <img src="{{ asset('front') }}/assets/img/customer/user-06.jpg" alt="Lawyer" class="img-fluid">
+                            <img src="{{$lawyerDetail->image}}" alt="Lawyer" class="img-fluid">
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-8 col-sm-12">
-                        <h5 class="card-title">Name of the Lawyer</h5>
-                        <p class="card-text mb-1">Some Degress and Description</p>
-                        <p class="card-text mb-1">Some Degress and Description</p>
-                        <p class="card-text mb-1">Some Degress and Description</p>
+                        <h5 class="card-title">{{$lawyerDetail->name}}</h5>
+                        <p class="card-text mb-1">{{$lawyerDetail->degree}}</p>
+                        {{-- <p class="card-text mb-1">Some Degress and Description</p>
+                        <p class="card-text mb-1">Some Degress and Description</p> --}}
 
                         <div class="card" style="display: inline-block; border:none; border-right: 2px solid black; border-radius: 0;">
                             <div class="card-body p-2">

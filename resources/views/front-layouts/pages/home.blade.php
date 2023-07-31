@@ -129,7 +129,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="viewall aos">
-                                <h4><a href="categories.html">View All <i class="fas fa-angle-right"></i></a></h4>
+                                <h4><a href="{{ route('categories', ['filter' => 'all']) }}">View All <i class="fas fa-angle-right"></i></a></h4>
                                 <span>Featured Categories</span>
                             </div>
                         </div>
@@ -138,7 +138,7 @@
                         <div class="row">
                             @foreach ($categories as $category)
                             <div class="col-lg-4 col-md-6">
-                                <a href="search.html">
+                                <a href="{{route('lawyers.online', $category->id)}}">
                                     <div class="cate-widget aos">
                                         <img src="{{$category->image}}" alt="">
                                         <div class="cate-title">
@@ -168,7 +168,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="viewall aos">
-                        <h4><a href="categories.html">View All <i class="fas fa-angle-right"></i></a></h4>
+                        <h4><a href="{{ route('categories', ['filter' => 'all']) }}">View All <i class="fas fa-angle-right"></i></a></h4>
                         <span>Most Popular</span>
                     </div>
                 </div>
@@ -185,13 +185,14 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row my-3 justify-content-center">
+                            @foreach ($services as $service)
                             <div class="col-lg-4 col-md-6 col-sm-12">
                                 <div class="card cate-widget">
                                     <img src="{{ asset('front') }}/assets/img/services/Services1.jpg" class="card-img-top" alt="service-img">
                                     <div class="card-body px-1">
                                         <div class="service-content">
                                             <h3 class="title">
-                                                <a href="service-details.html" class="text-black">Family law</a>
+                                                <a href="service-details.html" class="text-black">{{$service->title}}</a>
                                             </h3>
                                             <div class="rating">
                                                 <i class="fas fa-star filled"></i>
@@ -205,46 +206,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                <div class="card cate-widget">
-                                    <img src="{{ asset('front') }}/assets/img/services/Service2.jpg" class="card-img-top" alt="service-img">
-                                    <div class="card-body px-1">
-                                        <div class="service-content">
-                                            <h3 class="title">
-                                                <a href="service-details.html" class="text-black">Tax law</a>
-                                            </h3>
-                                            <div class="rating">
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <span class="d-inline-block average-rating">(5)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                <div class="card cate-widget">
-                                    <img src="{{ asset('front') }}/assets/img/services/Service4.jpg" class="card-img-top" alt="service-img">
-                                    <div class="card-body px-1">
-                                        <div class="service-content">
-                                            <h3 class="title">
-                                                <a href="service-details.html" class="text-black">Immigration law</a>
-                                            </h3>
-                                            <div class="rating">
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <span class="d-inline-block average-rating">(5)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+                           
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -268,7 +231,7 @@
                     </div>
                     <div class="viewall-dark"
                         style="display: flex; flex-direction: column; align-items: end; justify-content: center;">
-                        <h4><a href="categories.html">View All <i class="fas fa-angle-right"></i></a></h4>
+                        <h4><a href="{{ route('categories', ['filter' => 'all']) }}">View All <i class="fas fa-angle-right"></i></a></h4>
                         <span>Featured Cities</span>
                     </div>
                 </div>

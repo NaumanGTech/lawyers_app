@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Service;
 use App\Models\Support;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ class FrontController extends Controller
     public function index()
     {
         $categories=Category::get();
+        $services=Service::get();
         $cities=User::where('role','lawyer')->get();
 
         return view('front-layouts.pages.home',get_defined_vars());
@@ -21,17 +23,21 @@ class FrontController extends Controller
 
     public function categories()
     {
-        return view('front-layouts.pages.categories');
+        $categories=Category::get();
+        return view('front-layouts.pages.categories',get_defined_vars());
     }
 
-    public function lawyers_with_category()
+    public function lawyers_with_category($id)
     {
-        return view('front-layouts.pages.lawyers');
+        $lawyerDetail=User::where('id',$id)->first();
+        return view('front-layouts.pages.lawyers',get_defined_vars());
     }
 
-    public function lawyers_online()
+    public function lawyers_online($id)
     {
-        return view('front-layouts.pages.online_lawyers');
+        $lawyersByCategories=User::where('role','lawyer')->where('category_id',$id)->with('category')->get();
+        $categories=Category::get();
+        return view('front-layouts.pages.online_lawyers',get_defined_vars());
     }
 
     public function contact_us()

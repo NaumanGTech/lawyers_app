@@ -10,7 +10,8 @@ class Category extends Model
     use HasFactory;
     protected $fillable = [
         'image',
-        'title'
+        'title',
+        'description'
     ];
 
     public function getImageAttribute()

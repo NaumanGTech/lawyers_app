@@ -28,13 +28,15 @@
         <div class="container">
             <div class="catsec clearfix">
                 <div class="row">
+                    @foreach ($categories as $category)
                     <div class="col-lg-4 col-md-6">
-                        <a href="{{route('lawyers.with.category', ['category'=>'all'])}}">
+                        {{-- <a href="{{route('lawyers.with.category', ['category'=>'all'])}}"> --}}
+                        <a href="{{route('lawyers.online', $category->id)}}">
                             <div class="cate-widget">
                                 <img src="{{asset('front')}}/assets/img/category/Category1.jpg" alt="">
                                 <div class="cate-title category">
-                                    <h3>Category One</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dicta iusto esse nesciunt ipsa pariatur, nemo vel sapiente excepturi quisquam! Debitis eligendi</p>
+                                    <h3>{{$category->title ?? ''}}</h3>
+                                    <p>{{$category->description ?? 'There is no description Provided about this category.'}}</p>
                                 </div>
                                 <div class="cate-count">
                                    <p class="mb-0">View Lawyers</p>
@@ -42,118 +44,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="{{route('lawyers.with.category', ['category'=>'all'])}}">
-                            <div class="cate-widget">
-                                <img src="{{asset('front')}}/assets/img/category/Category1.jpg" alt="">
-                                <div class="cate-title category">
-                                    <h3>Category One</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dicta iusto esse nesciunt ipsa pariatur, nemo vel sapiente excepturi quisquam! Debitis eligendi</p>
-                                </div>
-                                <div class="cate-count">
-                                    <p class="mb-0">View Lawyers</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="{{route('lawyers.with.category', ['category'=>'all'])}}">
-                            <div class="cate-widget">
-                                <img src="{{asset('front')}}/assets/img/category/Category1.jpg" alt="">
-                                <div class="cate-title category">
-                                    <h3>Category One</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dicta iusto esse nesciunt ipsa pariatur, nemo vel sapiente excepturi quisquam! Debitis eligendi</p>
-                                </div>
-                                <div class="cate-count">
-                                    <p class="mb-0">View Lawyers</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="{{route('lawyers.with.category', ['category'=>'all'])}}">
-                            <div class="cate-widget">
-                                <img src="{{asset('front')}}/assets/img/category/Category1.jpg" alt="">
-                                <div class="cate-title category">
-                                    <h3>Category One</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dicta iusto esse nesciunt ipsa pariatur, nemo vel sapiente excepturi quisquam! Debitis eligendi</p>
-                                </div>
-                                <div class="cate-count">
-                                    <p class="mb-0">View Lawyers</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="{{route('lawyers.with.category', ['category'=>'all'])}}">
-                            <div class="cate-widget">
-                                <img src="{{asset('front')}}/assets/img/category/Category1.jpg" alt="">
-                                <div class="cate-title category">
-                                    <h3>Category One</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dicta iusto esse nesciunt ipsa pariatur, nemo vel sapiente excepturi quisquam! Debitis eligendi</p>
-                                </div>
-                                <div class="cate-count">
-                                    <p class="mb-0">View Lawyers</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="{{route('lawyers.with.category', ['category'=>'all'])}}">
-                            <div class="cate-widget">
-                                <img src="{{asset('front')}}/assets/img/category/Category1.jpg" alt="">
-                                <div class="cate-title category">
-                                    <h3>Category One</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dicta iusto esse nesciunt ipsa pariatur, nemo vel sapiente excepturi quisquam! Debitis eligendi</p>
-                                </div>
-                                <div class="cate-count">
-                                    <p class="mb-0">View Lawyers</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="{{route('lawyers.with.category', ['category'=>'all'])}}">
-                            <div class="cate-widget">
-                                <img src="{{asset('front')}}/assets/img/category/Category1.jpg" alt="">
-                                <div class="cate-title category">
-                                    <h3>Category One</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dicta iusto esse nesciunt ipsa pariatur, nemo vel sapiente excepturi quisquam! Debitis eligendi</p>
-                                </div>
-                                <div class="cate-count">
-                                    <p class="mb-0">View Lawyers</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="{{route('lawyers.with.category', ['category'=>'all'])}}">
-                            <div class="cate-widget">
-                                <img src="{{asset('front')}}/assets/img/category/Category1.jpg" alt="">
-                                <div class="cate-title category">
-                                    <h3>Category One</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dicta iusto esse nesciunt ipsa pariatur, nemo vel sapiente excepturi quisquam! Debitis eligendi</p>
-                                </div>
-                                <div class="cate-count">
-                                    <p class="mb-0">View Lawyers</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="{{route('lawyers.with.category', ['category'=>'all'])}}">
-                            <div class="cate-widget">
-                                <img src="{{asset('front')}}/assets/img/category/Category1.jpg" alt="">
-                                <div class="cate-title category">
-                                    <h3>Category One</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dicta iusto esse nesciunt ipsa pariatur, nemo vel sapiente excepturi quisquam! Debitis eligendi</p>
-                                </div>
-                                <div class="cate-count">
-                                    <p class="mb-0">View Lawyers</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="pagination">
                     <ul>

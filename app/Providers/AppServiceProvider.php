@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function($view){
             $user = Auth::user();
             $view->with('user' , $user);
+        });
+
+        view()->composer('front-layouts.partials.navbar', function ($view) {
+            $category = Category::get();
+            $view->with('categories', $category);
         });
     }
 }

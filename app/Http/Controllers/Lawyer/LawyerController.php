@@ -7,7 +7,7 @@ use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Flash;
+use Laracasts\Flash\Flash;
 
 class LawyerController extends Controller
 {
@@ -96,8 +96,8 @@ class LawyerController extends Controller
         $user->postal_code = $request->input('postal_code');
 
         if ($request->file()) {
-            $imageName = rand(0, 9999). time(). '.' . $request->image->extension();
-            $request->file('image')->move(public_path('uploads/lawyer'), $imageName);
+            $imageName = rand(0, 9999) . time() . '.' . $request->image->extension();
+            $request->file('image')->move(public_path('uploads/user'), $imageName);
             $user->image = $imageName;
         }
         $user->update();

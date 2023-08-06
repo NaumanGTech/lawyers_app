@@ -3,26 +3,26 @@
     <div class="col-xl-9 col-md-8">
         <div class="row">
             <div class="col-lg-4">
-                <a href="user-reviews.html" class="dash-widget dash-bg-2">
-                    <span class="dash-widget-icon">16</span>
+                <a href="" class="dash-widget dash-bg-2">
+                    <span class="dash-widget-icon">0</span>
                     <div class="dash-widget-info">
                         <span>All Orders</span>
                     </div>
                 </a>
             </div>
             <div class="col-lg-4">
-                <a href="user-reviews.html" class="dash-widget dash-bg-2">
-                    <span class="dash-widget-icon">16</span>
+                <a href="" class="dash-widget dash-bg-2">
+                    <span class="dash-widget-icon">0</span>
                     <div class="dash-widget-info">
-                        <span>Reviews</span>
+                        <span>Pending Order</span>
                     </div>
                 </a>
             </div>
             <div class="col-lg-4">
-                <a href="user-reviews.html" class="dash-widget dash-bg-2">
-                    <span class="dash-widget-icon">16</span>
+                <a href="" class="dash-widget dash-bg-2">
+                    <span class="dash-widget-icon">0</span>
                     <div class="dash-widget-info">
-                        <span>Reviews</span>
+                        <span>Completed Order</span>
                     </div>
                 </a>
             </div>

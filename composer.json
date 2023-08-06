@@ -15,6 +15,7 @@
         "laravel/ui": "^4.2",
         "munafio/chatify": "^1.6",
         "pusher/pusher-php-server": "^7.2",
+        "samir-hussein/paymob": "^2.0",
         "snapappointments/bootstrap-select": "^1.13",
         "spatie/laravel-permission": "^5.10",
         "stripe/stripe-php": "^10.18",

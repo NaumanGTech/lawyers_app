@@ -64,14 +64,14 @@
                             <h3>Find Best <span>Lawyers</span></h3>
                             <p>Discuss your problems by meeting and on online sessions</p>
                             <div class="search-box" style="z-index: 9999">
-                                <form action="search.html">
+                                <form action="{{ route('search') }}" method="GET">
                                     <div class="search-input line">
                                         <i class="fas fa-tv bficon"></i>
                                         <div class="form-group mb-0">
                                             {{-- <input type="text" class="form-control"
                                                 placeholder="What are you looking for?"> --}}
                                                 <select name="select_category" id="" class="form-control mt-2 text-center" style="border: #f6f6f6">
-                                                    <option value="">Select Location</option>
+                                                    <option value="">Select Category</option>
                                                     @foreach ($categories as $category)
                                                     <option value="{{$category->id}}">{{$category->title}}</option>
                                                     @endforeach
@@ -87,7 +87,7 @@
                                         </i>
                                         <div class="form-group mb-0">
                                             {{-- <input type="text" class="form-control" placeholder="Your Location"> --}}
-                                            <select name="" id="" class="form-control mt-2 text-center" style="border: #f6f6f6">
+                                            <select name="select_location " id="" class="form-control mt-2 text-center" style="border: #f6f6f6">
                                                 <option value="">Select Location</option>
                                                 @foreach ($cities->unique('city') as $city)
                                                 <option value="{{$city->city}}">{{$city->city}}</option>

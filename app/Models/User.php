@@ -66,6 +66,14 @@ class User extends Authenticatable
         return asset('uploads/user') . '/' . $this->attributes['image'];
     }
 
+    public function getCustomerImageAttribute()
+    {
+        if ($this->attributes['image'] == null) {
+            return asset('uploads/user.jpg');
+        }
+        return asset('uploads/user') . '/' . $this->attributes['image'];
+    }
+
     public function isCustomer()
     {
         return $this->role === 'user';

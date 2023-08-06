@@ -7,14 +7,17 @@ use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\VerificationController;
+use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Lawyer\LawyerController;
 use App\Http\Controllers\Lawyer\ServiceController;
+use App\Http\Controllers\PayMobController;
 use App\Http\Controllers\PusherController;
 use App\Http\Controllers\StripePaymentController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +50,9 @@ Route::post('/receive', [PusherController::class, 'receive'])->name('receive');
 Route::get('image/update', function () {
     return view('front-layouts.pages.lawyer.image-update');
 });
+
+Route::get('/search', [FrontController::class, 'search'])->name('search');
+Route::get('/advance/search', [FrontController::class, 'advanceSearch'])->name('advance.search');
 
 Auth::routes();
 Route::get('chat', [HomeController::class, 'chat'])->name('chat');
@@ -141,6 +147,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/payment', [StripePaymentController::class, 'payment'])->name('payment');
     Route::post('/', [StripePaymentController::class, 'call']);
 
+
+    Route::post('/checkout', [CheckOutController::class, 'index'])->name('checkout');
+    Route::post('/pay', [CheckOutController::class, 'pay'])->name('pay');
+    Route::get('checkout/response', function (Request $request) {
+        return $request->all();
+    });
 });
 
 

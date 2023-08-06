@@ -170,6 +170,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+
+        PayMob\PayMobServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -186,6 +188,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'Flash' => Laracasts\Flash\Flash::class,
+        'PayMob' => PayMob\Facades\PayMob::class,
     ])->toArray(),
 
 ];

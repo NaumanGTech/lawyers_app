@@ -34,10 +34,10 @@
                             <h4 class="card-title mb-4">Search Filter</h4>
                             <form id="search_form">
                                 <div class="filter-widget">
-                                    <div class="filter-list">
+                                    {{-- <div class="filter-list">
                                         <h4 class="filter-title">Keyword</h4>
                                         <input type="text" class="form-control" placeholder="What are you looking for?">
-                                    </div>
+                                    </div> --}}
                                     <div class="filter-list">
                                         <h4 class="filter-title">Sort By</h4>
                                         <select class="form-control selectbox select form-select">
@@ -146,4 +146,21 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.get_services').on('click', function() {
+                var keyword = $('#search_form input[name="keyword"]').val();
+                var sortBy = $('#search_form select[name="sort_by"]').val();
+                var category = $('#search_form select[name="category"]').val();
+                var location = $('#search_form input[name="location"]').val();
+    
+                var url = '{{ route('advance.search') }}' + '?keyword=' + keyword + '&sort_by=' + sortBy + '&category=' + category + '&location=' + location;
+    
+                // Redirect to the search URL
+                window.location.href = url;
+            });
+        });
+    </script>
+    
 @endsection

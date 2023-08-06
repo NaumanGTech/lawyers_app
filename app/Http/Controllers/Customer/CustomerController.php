@@ -38,21 +38,38 @@ class CustomerController extends Controller
         return view('front-layouts.pages.customer.profile', get_defined_vars());
     }
 
-    public function customerProfileUpdate(User $user, Request $request)
+
+    
+    public function customerProfileUpdate(Request $request)
     {
         $id = Auth::user()->id;
-        $user = User::where('id', $id)->first();
+        $user = User::find($id);
+    
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found.');
+        }
+    
+        // Validate the input data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the max size as per your requirement
+        ]);
+    
+        // Update user information
         $user->update($request->all());
-
-        if ($request->file()) {
-            // dd($user);
+    
+        if ($request->file('image')) {
+           
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('uploads/user'), $imageName);
-            User::whereId($user->id)->update([
-                'image' => $imageName
-            ]);
+    
+           
+            $user->image = $imageName;
+            $user->save();
         }
-
-        return back();
+    
+        return redirect()->back()->with('success', 'Profile updated successfully.');
     }
+    
 }

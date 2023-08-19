@@ -33,19 +33,18 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
-        // $request->validate([
-        //     'title' => 'required|string',
-        //     'location' => 'required|string',
-        //     'amount' => 'required|numeric',
-        //     'categories_id' => 'required',
-        //     'start_day' => 'required',
-        //     'end_day' => 'required',
-        //     'start_time' => 'required',
-        //     'end_time' => 'required',
-        //     'add_extra_day' => 'required',
-        //     'cover_image' => 'required'
-        // ]);
+        $request->validate([
+            'title' => 'required|string',
+            'location' => 'required|string',
+            'amount' => 'required|numeric',
+            'categories_id' => 'required',
+            'start_day' => 'required',
+            'end_day' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'add_extra_day' => 'required',
+            'cover_image' => 'required'
+        ]);
 
         $update_id = $request->id;
         if ($update_id) {

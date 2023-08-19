@@ -9,7 +9,7 @@
                     <span></span>
                 </span>
             </a>
-            <a href="{{route('front')}}" class="navbar-brand logo">
+            <a href="{{ route('front') }}" class="navbar-brand logo">
                 {{-- <img src="{{asset('front')}}/assets/img/logo.png" class="img-fluid" alt="Logo"> --}}
                 <h4 style="color: #fff;">App Logo</h4>
             </a>
@@ -19,24 +19,25 @@
         </div>
         <div class="main-menu-wrapper">
             <div class="menu-header">
-                <a href="{{route('front')}}" class="menu-logo">
+                <a href="{{ route('front') }}" class="menu-logo">
                     {{-- <img src="{{asset('front')}}/assets/img/logo.png" class="img-fluid" alt="Logo"> --}}
                     <h4 style="color: #fff;">App Logo</h4>
                 </a>
                 <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
             </div>
             <ul class="main-nav">
-                <li class="{{ (request()->is('/')) ? 'active' : '' }}">
-                    <a href="{{route('front')}}">Home</a>
+                <li class="{{ request()->is('/') ? 'active' : '' }}">
+                    <a href="{{ route('front') }}">Home</a>
                 </li>
-                <li class="has-submenu {{ (request()->is('categories*')) ? 'active' : '' }}">
+                <li class="has-submenu {{ request()->is('categories*') ? 'active' : '' }}">
 
-                    <a href="{{ route('categories', ['filter' => 'all']) }}">Categories<i class="fas fa-chevron-down"></i></a>
+                    <a href="{{ route('categories', ['filter' => 'all']) }}">Categories<i
+                            class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
-                        @foreach ($categories as $category )
-                        <li><a href="{{route('lawyers.online', $category->id)}}">{{$category->title}}</a></li>
+                        @foreach ($categories as $category)
+                            <li><a href="{{ route('lawyers.online', $category->id) }}">{{ $category->title }}</a></li>
                         @endforeach
-                      
+
                         {{-- <li><a href="my-services.html">Real estate lawyer</a></li>
                         <li><a href="provider-bookings.html">Constitutional law</a></li>
                         <li><a href="provider-settings.html">Property law</a></li>
@@ -61,11 +62,13 @@
                         <li><a href="provider-subscription.html">Corporate lawyer</a></li> --}}
                     </ul>
                 </li>
-                <li class="has-submenu {{ (request()->is('lawyers/online*')) ? 'active' : '' }}">
-                    <a href="{{route('lawyers.online', ['filter'=> 'all'])}}">Consult Online<i class="fas fa-chevron-down"></i></a>
+                <li class="has-submenu {{ request()->is('lawyers/online*') ? 'active' : '' }}">
+                    <a href="{{ route('lawyers.online', ['filter' => 'all']) }}">Consult Online<i
+                            class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
                         <li><a href="#">Chat</a></li>
-                        <li><a href="{{route('lawyers.online', ['filter'=> 'online'])}}">Find Online Lawyers</a></li>
+                        <li><a href="{{ route('lawyers.online', ['filter' => 'online']) }}">Find Online Lawyers</a>
+                        </li>
                     </ul>
                 </li>
                 {{-- <li class="has-submenu">
@@ -98,28 +101,43 @@
                     <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
                         <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="{{route('contact.us')}}">Contact Us</a></li>
+                        <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
                         <li><a href="faq.html">Faq</a></li>
                         <li><a href="#">Terms & Conditions</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#provider-register">Become a Professional</a>
+                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#provider-register">Become a
+                        Professional</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" type="button" data-bs-toggle="modal" data-bs-target="#user-register">Become a
+                    <a href="javascript:void(0);" type="button" data-bs-toggle="modal"
+                        data-bs-target="#user-register">Become a
                         Customer</a>
                 </li>
             </ul>
         </div>
-        <ul class="nav header-navbar-rht">
-            <li class="nav-item">
-                <a class="nav-link header-login" href="javascript:void(0);" data-bs-toggle="modal"
-                    data-bs-target="#login_modal">Login</a>
-            </li>
-        </ul>
+        @if (auth()->check() && auth()->user()->role == 'lawyer')
+            <ul class="nav header-navbar-rht">
+                <li class="nav-item">
+                    <a class="nav-link header-login" href="{{ route('lawyer.dashboard') }}">Dashboard</a>
+                </li>
+            </ul>
+        @elseif (auth()->check() && auth()->user()->role == 'customer')
+            <ul class="nav header-navbar-rht">
+                <li class="nav-item">
+                    <a class="nav-link header-login" href="{{ route('customer.dashboard') }}">Dashboard</a>
+                </li>
+            </ul>
+        @else
+            <ul class="nav header-navbar-rht">
+                <li class="nav-item">
+                    <a class="nav-link header-login" href="javascript:void(0);" data-bs-toggle="modal"
+                        data-bs-target="#login_modal">Login</a>
+                </li>
+            </ul>
+        @endif
     </nav>
 </header>
 <!-- /Header -->
-

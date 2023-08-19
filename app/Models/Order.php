@@ -20,4 +20,16 @@ class Order extends Model
         'customer_location',
 
     ];
+
+    public function customer(){
+        return $this->belongsTo(User::class, 'id', 'customer_id');
+    }
+
+    public function lawyer(){
+        return $this->belongsTo(User::class, 'id', 'lawyer_id');
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class, 'id', 'category_id');
+    }
 }

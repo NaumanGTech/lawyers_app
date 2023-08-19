@@ -35,7 +35,9 @@ class User extends Authenticatable
         'image',
         'is_document_submit',
         'degree',
-        'certificates'
+        'certificates',
+        'document_status',
+        'reason'
     ];
 
     /**
@@ -65,6 +67,18 @@ class User extends Authenticatable
         }
         return asset('uploads/user') . '/' . $this->attributes['image'];
     }
+    public function getDegreeAttribute(){
+        if($this->attributes['degree'] == null){
+            return asset('uploads/user.jpg');
+        }
+        return asset('uploads/lawyer/documents') . '/' . $this->attributes['degree'];
+    }
+    // public function getCertificatesAttribute(){
+    //     if($this->attributes['certificates'] == null){
+    //         return asset('uploads/user.jpg');
+    //     }
+    //     return asset('uploads/lawyer/documents') . '/' . $this->attributes['certificates'];
+    // }
 
     public function getCustomerImageAttribute()
     {
@@ -86,5 +100,9 @@ class User extends Authenticatable
 
     public function category(){
         return $this->hasOne(Category::class,'id','category_id');
+    }
+
+    public function time_spans(){
+        return $this->hasMany(LawyersTimeSpan::class, 'user_id');
     }
 }

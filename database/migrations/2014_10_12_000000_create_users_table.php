@@ -33,6 +33,9 @@ return new class extends Migration
             $table->tinyInteger('is_document_submit')->default(0)->nullable();
             $table->string('degree')->nullable();
             $table->string('certificates')->nullable();
+            $table->string('document_status')->default('not submitted')->nullable();
+            $table->string('reason')->nullable();
+            $table->tinyInteger('is_blocked')->default(0)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

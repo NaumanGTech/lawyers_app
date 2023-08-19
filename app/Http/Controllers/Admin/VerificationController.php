@@ -12,24 +12,40 @@ use Illuminate\Support\Facades\Notification;
 
 class VerificationController extends Controller
 {
-    public function index(){
-        $user = User::where('role', 'lawyer')->where('is_document_submit', 1)->where('is_doc_approved', 0)->get();
-        return view('layouts.pages.verification.index', get_defined_vars());
+    public function all_verifications(){
+        $obj = User::where('role', 'lawyer')->where('is_document_submit', 1)->where('document_status', 'pending')->get();
+        return view('layouts.pages.verifications.all_verifications', get_defined_vars());
+    }
+    public function details($id){
+        $baseURL =url('/') . '/';
+        $lawyer = User::find($id);
+        $certificates = json_decode($lawyer->certificates);
+        // dd($baseURL);
+        return view('layouts.pages.verifications.document_detail', get_defined_vars());
     }
 
+    public function document_approval(Request $request){
+        $request->validate([
+            'approval' => 'required|string'
+        ]);
+
+        $lawyer = User::where('id', $request->lawyer_id)->first();
+        $lawyer->document_status = $request->approval;
+        $lawyer->reason = $request->reason;
+        $lawyer->update();
+
+        return redirect()->route('admin.lawyer.verification')->with(['message' => 'Documents' . $request->approval . 'successfully']);
+    }
     public function notify(){
         if (auth()->user()) {
             $user = User::first();
             Auth::user()->notify(new DocumentsApproved($user));
         }
-        dd('ok');
     }
 
     public function blockUser(){
         $user = User::where('role', 'lawyer')->first();
         Notification::send($user, new BlockUser);
-
-        dd('done');
         // return view('layouts.pages.dashboard');
     }
 

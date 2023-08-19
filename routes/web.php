@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\CustomerRegisterController;
-use App\Http\Controllers\Auth\LawyerRegisterController;
 use App\Http\Controllers\Auth\UsersLoginController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -11,9 +9,28 @@ use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
+
+// ==============> Admin Controllers Starts
+// use App\Http\Controllers\Admin\DashboardController;
+// use App\Http\Controllers\Admin\VerificationController;
+// use App\Http\Controllers\Admin\TransactionController;
+// ==============> Admin Controllers Ends
+
+// ==============> Customer Controllers Starts
+use App\Http\Controllers\Auth\CustomerRegisterController;
+// use App\Http\Controllers\Customer\OrderController;
+// use App\Http\Controllers\Customer\CustomerController;
+// ==============> Customer Controllers Ends
+
+// ==============> Lawyers Controller Starts
+use App\Http\Controllers\Auth\LawyerRegisterController;
 use App\Http\Controllers\Lawyer\LawyerController;
 use App\Http\Controllers\Lawyer\ServiceController;
 use App\Http\Controllers\PayMobController;
+use App\Http\Controllers\Lawyer\BookingController;
+use App\Http\Controllers\Lawyer\LawyerPaymentController;
+// ==============> Lawyers Controller Endss
+
 use App\Http\Controllers\PusherController;
 use App\Http\Controllers\StripePaymentController;
 use Illuminate\Support\Facades\Auth;
@@ -29,9 +46,10 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+ */
 
 Route::get('/', [FrontController::class, 'index'])->name('front');
+Route::get('/blocked', [FrontController::class, 'user_blocked'])->name('blocked.users');
 Route::post('lawyer/signup', [LawyerRegisterController::class, 'create'])->name('lawyer.register');
 Route::post('customer/signup', [CustomerRegisterController::class, 'create'])->name('customer.register');
 // Route::post('/admin/login', [DashboardController::class, 'admin_login'])->name('admin.login');
@@ -91,19 +109,19 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/transaction/detail/{id}', [TransactionController::class, 'transaction_detail'])->name('admin.transaction.details');
     Route::post('admin/transaction/delete/{id}', [TransactionController::class, 'transaction_delete'])->name('admin.transaction.delete');
 
-    Route::get('admin/lawyers/submitted/docs', [\App\Http\Controllers\Admin\VerificationController::class, 'index'])->name('admin.lawyer.documents');
-    Route::get('admin/notify', [\App\Http\Controllers\Admin\VerificationController::class, 'notify'])->name('admin.notify.lawyer');
+    Route::get('admin/lawyers/verifications', [VerificationController::class, 'all_verifications'])->name('admin.lawyer.verification');
+    Route::get('admin/lawyer/view/doc/{id}', [VerificationController::class, 'details'])->name('admin.lawyer.view.details');
+    Route::post('admin/lawyer/document/approval', [VerificationController::class, 'document_approval'])->name('admin.lawyer.document.approval');
+    Route::get('admin/notify', [VerificationController::class, 'notify'])->name('admin.notify.lawyer');
 
     Route::get('/admin/block/user', [VerificationController::class, 'blockUser'])->name('admin.block.user');
 });
 
-
 // ADMIN PART
 // Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-
 // LAWYER PART
-Route::middleware(['auth', 'lawyer'])->group(function () {
+Route::middleware(['auth', 'lawyer', 'blockedUser'])->group(function () {
     Route::get('/lawyer/dashboard', [LawyerController::class, 'index'])->name('lawyer.dashboard');
     Route::get('/lawyer/documents/verification', [LawyerController::class, 'document_submission'])->name('lawyer.document.verification');
     Route::post('/lawyer/documents/submit', [LawyerController::class, 'submit_documents'])->name('lawyer.documents.submit');
@@ -118,11 +136,15 @@ Route::middleware(['auth', 'lawyer'])->group(function () {
     Route::post('/lawyer/service/detail/{id}', [ServiceController::class, 'detail'])->name('lawyer.service.detail');
     Route::post('lawyer/service/delete/{id}', [ServiceController::class, 'delete'])->name('lawyer.service.delete');
 
-    Route::get('/lawyer/category/list', [ServiceController::class, 'category_list'])->name('lawyer.category.list');
+    // Orders Crud
+    Route::get('lawyer/orders/all', [BookingController::class, 'index'])->name('lawyer.all.orders');
+
+    // Earnings Crud
+    Route::get('/lawyer/wallet', [LawyerPaymentController::class, 'index'])->name('lawyer.wallet');
 });
 
 // CUSTOMER PART
-Route::middleware(['auth', 'customer'])->group(function () {
+Route::middleware(['auth', 'customer', 'blockedUser'])->group(function () {
     Route::get('/customer/dashboard', [CustomerController::class, 'index'])->name('customer.dashboard');
 
     // LAwyers
@@ -142,7 +164,6 @@ Route::middleware(['auth', 'customer'])->group(function () {
     Route::post('/order/status', [OrderController::class, 'order_status'])->name('order.status');
 });
 
-
 Route::middleware(['auth'])->group(function () {
     Route::post('/payment', [StripePaymentController::class, 'payment'])->name('payment');
     Route::post('/', [StripePaymentController::class, 'call']);
@@ -154,7 +175,6 @@ Route::middleware(['auth'])->group(function () {
         return $request->all();
     });
 });
-
 
 // Route::group(['middleware' => 'lawyer'], function () {
 //     Route::group(['prefix' => 'lawyer'], function () {

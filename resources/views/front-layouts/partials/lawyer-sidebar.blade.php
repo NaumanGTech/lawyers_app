@@ -29,13 +29,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('lawyer.category.list')}}" class="nav-link {{ (request()->is('lawyer/category*')) ? 'active' : '' }}">
-                    <i class="far fa-address-book"></i> <span>My Categories</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="provider-bookings.html" class="nav-link">
-                    <i class="far fa-calendar-check"></i> <span>My Booking</span>
+                <a href="{{route('lawyer.all.orders')}}" class="nav-link {{ (request()->is('lawyer/orders*')) ? 'active' : '' }}">
+                    <i class="far fa-calendar-check"></i> <span>My Order</span>
                 </a>
             </li>
             <li class="nav-item">

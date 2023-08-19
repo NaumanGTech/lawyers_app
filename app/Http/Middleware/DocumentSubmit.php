@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class BlockUser
+class DocumentSubmit
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,11 @@ class BlockUser
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-        if($user->is_blocked){
-            Auth::logout();
-            return redirect()->route('blocked.users');
-        }else{
+        if ($user->is_document_submit) {
             return $next($request);
+        }
+        else{
+            return redirect()->route('lawyer.document.verification');
         }
     }
 }

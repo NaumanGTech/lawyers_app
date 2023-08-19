@@ -7,15 +7,12 @@
 </head>
 
 <body>
-  
-    @guest
-        <div class="main-wrapper">
-            @include('front-layouts.partials.navbar')
-            @yield('content')
-            @include('front-layouts.partials.footer')
-            @include('front-layouts.partials.modals')
-        </div>
-    @endguest
+    <div class="main-wrapper">
+        @include('front-layouts.partials.navbar')
+        @yield('content')
+        @include('front-layouts.partials.footer')
+        @include('front-layouts.partials.modals')
+    </div>
 
     @include('front-layouts.assets.script')
 </body>

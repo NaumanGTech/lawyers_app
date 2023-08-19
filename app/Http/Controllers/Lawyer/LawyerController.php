@@ -17,17 +17,17 @@ class LawyerController extends Controller
     }
     public function index()
     {
-        if (Auth::user()->is_document_submit == 0) {
-            return redirect()->route('lawyer.document.verification');
-        } else {
+        $user = Auth::user();
+        if ($user->is_document_submit == 1) {
             $service = Service::where('user_id', Auth::id())->count();
             $booking = Service::where('user_id', Auth::id())->count();
             $category = Service::where('user_id', Auth::id())->count();
 
             return view('front-layouts.pages.lawyer.dashboard', get_defined_vars());
+        } else {
+            return redirect()->route('lawyer.document.verification');
         }
     }
-
     public function document_submission()
     {
         return view('front-layouts.pages.lawyer.document-verification');
@@ -51,12 +51,13 @@ class LawyerController extends Controller
                 // Generate a unique name for the image
                 $imageName = uniqid() . '_' . time() . '_' . $image->getClientOriginalName();
                 $image->move(public_path('uploads/lawyer/documents'), $imageName);
-                $uploadedImages[] = 'uploads/lawyer/documents' . $imageName;
+                $uploadedImages[] = 'uploads/lawyer/documents/' . $imageName;
             }
             $user->certificates = $uploadedImages;
             $user->is_document_submit = 1;
+            $user->document_status = "pending";
             $user->update();
-            return redirect()->route('lawyer.dashboard')->with(['message' => 'Images uploaded successfully', 'images' => $uploadedImages]);
+            return redirect()->route('lawyer.dashboard')->with(['message' => 'Documents uploaded successfully', 'images' => $uploadedImages]);
         }
     }
 

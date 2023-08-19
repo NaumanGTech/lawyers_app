@@ -1554,8 +1554,10 @@ html.menu-opened body {
 -----------------------*/
 
 .home-banner {
-    background-image: url("../img/Lawyers.jpg");
+    background-image: url("../img/Lawyers.jpeg");
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100%;
     width: 100%;
     margin: 0;

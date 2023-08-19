@@ -14,27 +14,27 @@
                 <li class="{{ request()->is('all-users*') ? 'active' : '' }}">
                     <a href="{{ route('all.users') }}"><i class="fas fa-columns"></i> <span>All Users</span></a>
                 </li>
-                <li class="{{ request()->is('category/index*') ? 'active' : '' }}">
+                <li>
+                    <a href="{{route('admin.lawyer.verification')}}"><i class="fas fa-layer-group"></i> <span>Verifications</span></a>
+                </li>
+                <li class="{{ request()->is('category*') ? 'active' : '' }}">
                     <a href="{{ route('category.index') }}"><i class="fas fa-columns"></i> <span>Categories</span></a>
                 </li>
-                <li class="{{ request()->is('service/index*') ? 'active' : '' }}">
+                <li class="{{ request()->is('service*') ? 'active' : '' }}">
                     <a href="{{ route('service.index') }}"><i class="fas fa-columns"></i> <span>Services</span></a>
                 </li>
-                <li class="{{ request()->is('admin/order/index*') ? 'active' : '' }}">
+                <li class="{{ request()->is('admin/order*') ? 'active' : '' }}">
                     <a href="{{ route('admin.order.index') }}"><i class="fas fa-columns"></i> <span>Order</span></a>
                 </li>
-                <li class="{{ request()->is('admin/general-setting/index*') ? 'active' : '' }}">
+                <li class="{{ request()->is('admin/general-setting*') ? 'active' : '' }}">
                     <a href="{{ route('admin.general.setting.index') }}"><i class="fas fa-columns"></i> <span>General
                             Setting</span></a>
                 </li>
-                <li class="{{ request()->is('admin/transaction/index*') ? 'active' : '' }}">
+                <li class="{{ request()->is('admin/transaction*') ? 'active' : '' }}">
                     <a href="{{ route('admin.transaction.index') }}"><i class="fas fa-columns"></i>
                         <span>Transaction</span></a>
                 </li>
                 {{-- <li>
-                    <a href="categories.html"><i class="fas fa-layer-group"></i> <span>Categories</span></a>
-                </li>
-                <li>
                     <a href="subcategories.html"><i class="fab fa-buffer"></i> <span>Sub Categories</span></a>
                 </li>
                 <li>

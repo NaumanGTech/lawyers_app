@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use PayMob\Facades\PayMob;
 
@@ -45,10 +46,38 @@ class PayMobController extends Controller
         return  $PaymentKey->token;
     }
 
+    public function checkout_processed(Request $request){
+        $request_hmac = $request->hmac;
+        $calc_hmac = PayMob::calcHMAC($request);
+    
+        if ($request_hmac == $calc_hmac) {
+            $order_id = $request->obj['order']['merchant_order_id'];
+            $amount_cents = $request->obj['amount_cents'];
+            $transaction_id = $request->obj['id'];
+    
+            $order = Order::find($order_id);
+    
+            if ($request->obj['success'] == true && ($order->total_price * 100) == $amount_cents) {
+                $order->update([
+                    'transaction_status' => 'finished',
+                    'transaction_id' => $transaction_id
+                ]);
+            } else {
+                $order->update([
+                    'transaction_status' => "failed",
+                    'transaction_id' => $transaction_id
+                ]);
+            }
+        }
+    }
 
     // OPTION 2
     public function paymob_callback(Request $request)
     {
         return $request->all();
+    }
+
+    public function paymobtestpage(){
+        return view('paymobTestpage');
     }
 }

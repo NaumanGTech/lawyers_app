@@ -8,6 +8,7 @@
         "php": "^8.1",
         "beyondcode/laravel-websockets": "^1.14",
         "guzzlehttp/guzzle": "^7.2",
+        "jn-jairo/laravel-ngrok": "^3.0",
         "laracasts/flash": "^3.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
@@ -19,7 +20,8 @@
         "snapappointments/bootstrap-select": "^1.13",
         "spatie/laravel-permission": "^5.10",
         "stripe/stripe-php": "^10.18",
-        "yoeunes/toastr": "^2.3"
+        "yoeunes/toastr": "^2.3",
+        "zfhassaan/easypaisa": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

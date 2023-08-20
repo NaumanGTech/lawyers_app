@@ -67,8 +67,8 @@
                                         ?>
 
                                         {{-- <form action="{{ route('order.store', $update_id) }}" method="POST"> --}}
-                                            <form action="{{ route('payment', $update_id) }}" method="POST">
-                                                {{-- <form action="{{ route('pay') }}" method="POST"> --}}
+                                            {{-- <form action="{{ route('payment', $update_id) }}" method="POST"> --}}
+                                                <form action="{{ route('checkout') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="lawyer_id" value="{{ $lawyer->id }}"
                                                 id="">

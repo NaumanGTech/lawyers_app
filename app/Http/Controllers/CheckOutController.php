@@ -51,12 +51,15 @@ class CheckOutController extends Controller
         $user = User::first();
         //  + total price
         $payMob = new PayMobServices(103);
-      
         $id=$payMob->get_id();
+     
        
         $url=$payMob->make_order($user);
+   
         $url = "https://pakistan.paymob.com/api/acceptance/iframes/131588?payment_token={payment_key_obtained_previously}".$url;
         return $url ;
 
     }
+
+    
 }

@@ -176,6 +176,8 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+Route::get('payTest/page',[PayMobController::class,'paymobtestpage'])->name('paymob.test.page');
+
 // Route::group(['middleware' => 'lawyer'], function () {
 //     Route::group(['prefix' => 'lawyer'], function () {
 //         Route::get('/dashboard', [LawyerController::class, 'index'])->name('lawyer.dashboard');

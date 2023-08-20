@@ -76,7 +76,7 @@
                                 <table class="table table-hover table-center mb-0 datatable">
                                     <thead>
                                         <tr>
-
+                                            <th>Payment Slip</th>
                                             <th>Lawyer id</th>
                                             <th>Customer id</th>
                                             <th>Category id</th>
@@ -88,7 +88,11 @@
                                     <tbody>
                                         @foreach ($obj as $key => $val)
                                             <tr>
-
+                                                <td>
+                                                    <a href="{{ $val->payment_slip }}" target="_blank" download>
+                                                        <img class="rounded service-img me-1" src="{{ $val->payment_slip }}" alt="nav logo">
+                                                    </a>
+                                                </td>
                                                 <td>{{ $val->lawyer_id }}</td>
                                                 <td>{{ $val->customer_id }}</td>
                                                 <td>{{ $val->category_id }}</td>

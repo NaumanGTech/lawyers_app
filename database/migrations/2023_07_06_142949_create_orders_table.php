@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('customer_status')->nullable();
             $table->string('lawyer_location')->nullable();
             $table->string('customer_location')->nullable();
+            $table->string('payment_slip')->nullable();
             $table->timestamps();
         });
     }

@@ -11,6 +11,20 @@ use PayMob\Facades\PayMob;
 
 class CheckOutController extends Controller
 {
+
+    public function selectPaymentType(Request $request){
+
+        $orderDetail = [
+            'lawyer_id' => $request->lawyer_id,
+            'amount' => $request->amount,
+            // ... (other fields you need)
+        ];
+        session()->put('orderDetail',$orderDetail);
+       
+
+        return view('front-layouts.pages.customer.checkout.paymentType',get_defined_vars());
+    }
+
     public function index(){
         $order=Order::create([
             'amount'=>1000,

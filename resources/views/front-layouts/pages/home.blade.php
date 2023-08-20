@@ -77,22 +77,17 @@
                                         <div class="form-group mb-0">
                                             {{-- <input type="text" class="form-control"
                                                 placeholder="What are you looking for?"> --}}
-                                                <select name="select_category" id="" class="form-control mt-2 text-center" style="border: #f6f6f6">
-                                                    <option value="">Select Category</option>
-                                                    @foreach ($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->title}}</option>
-                                                    @endforeach
-
-
-
-                                                </select>
                                             <select name="select_category" id=""
                                                 class="form-control mt-2 text-center" style="border: #f6f6f6">
                                                 <option value="">Select Category</option>
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                 @endforeach
+
+
+
                                             </select>
+                                           
                                         </div>
                                     </div>
                                     <div class="search-input">
@@ -100,17 +95,16 @@
                                         </i>
                                         <div class="form-group mb-0">
                                             {{-- <input type="text" class="form-control" placeholder="Your Location"> --}}
-                                            <select name="select_location " id="" class="form-control mt-2 text-center" style="border: #f6f6f6">
-                                            <select name="" id="" class="form-control mt-2 text-center"
-                                                style="border: #f6f6f6">
-                                                <option value="">Select Location</option>
-                                                @foreach ($cities->unique('city') as $city)
-                                                    <option value="{{ $city->city }}">{{ $city->city }}</option>
-                                                @endforeach
-                                            </select>
-                                            <a class="current-loc-icon current_location" href="javascript:void(0);">
-                                                <i class="fas fa-crosshairs"></i>
-                                            </a>
+                                                <select name="" id="" class="form-control mt-2 text-center"
+                                                    style="border: #f6f6f6">
+                                                    <option value="">Select Location</option>
+                                                    @foreach ($cities->unique('city') as $city)
+                                                        <option value="{{ $city->city }}">{{ $city->city }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <a class="current-loc-icon current_location" href="javascript:void(0);">
+                                                    <i class="fas fa-crosshairs"></i>
+                                                </a>
                                         </div>
 
                                     </div>
@@ -310,7 +304,7 @@
     <!-- /How It Works -->
     <script>
         /* When the user clicks on the button,
-                                toggle between hiding and showing the dropdown content */
+                                    toggle between hiding and showing the dropdown content */
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
         }

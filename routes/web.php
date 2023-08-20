@@ -168,12 +168,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/payment', [StripePaymentController::class, 'payment'])->name('payment');
     Route::post('/', [StripePaymentController::class, 'call']);
 
+// Pay MOB
+    // Route::post('/checkout', [CheckOutController::class, 'index'])->name('checkout');
+    // Route::post('/pay', [CheckOutController::class, 'pay'])->name('pay');
+    // Route::get('checkout/response', function (Request $request) {
+    //     return $request->all();
+    // });
 
-    Route::post('/checkout', [CheckOutController::class, 'index'])->name('checkout');
-    Route::post('/pay', [CheckOutController::class, 'pay'])->name('pay');
-    Route::get('checkout/response', function (Request $request) {
-        return $request->all();
-    });
+    // Payment Method
+    Route::post('/checkout', [CheckOutController::class, 'selectPaymentType'])->name('checkout');
 });
 
 Route::get('payTest/page',[PayMobController::class,'paymobtestpage'])->name('paymob.test.page');

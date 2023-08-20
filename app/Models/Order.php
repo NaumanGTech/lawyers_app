@@ -18,8 +18,16 @@ class Order extends Model
         'customer_status',
         'lawyer_location',
         'customer_location',
+        'payment_slip',
 
     ];
+
+    public function getPaymentSlipAttribute(){
+        if($this->attributes['payment_slip'] == null){
+            return asset('uploads/user.jpg');
+        }
+        return asset('uploads/user') . '/' . $this->attributes['payment_slip'];
+    }
 
     public function customer(){
         return $this->belongsTo(User::class, 'id', 'customer_id');

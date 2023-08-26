@@ -18,10 +18,10 @@
                     <h2>Add Service</h2>
                 </div>
                 <?php
+                $update_id = 0;
+                if ($id !== 0) {
                     $update_id = 0;
-                    if($id !== 0){
-                        $update_id = 0;
-                    }
+                }
                 ?>
                 <form action="{{ route('lawyer.service.store', $update_id) }}" method="POST">
                     @csrf
@@ -29,10 +29,11 @@
                         <h3 class="heading-2">Service Information</h3>
                         <div class="row">
                             <div class="col-lg-12">
-                                <input type="hidden" value="{{$update_id}}" name="id">
+                                <input type="hidden" value="{{ $update_id }}" name="id">
                                 <div class="form-group">
                                     <label class="black_label">Service Title <span class="text-danger">*</span></label>
-                                    <input class="form-control black_input" type="text" name="title" required>
+                                    <input class="form-control black_input" type="text" name="title"
+                                        value="{{ old('title') }}" required>
                                     @error('title')
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -43,7 +44,8 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="black_label">Service Location <span class="text-danger">*</span></label>
-                                    <input class="form-control black_input" type="text" name="location" required>
+                                    <input class="form-control black_input" type="text" name="location" required
+                                        value="{{ old('location') }}">
                                     @error('location')
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -54,14 +56,16 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="me-sm-2 black_label">Select a Category for this service</label>
-                                    <select class="form-control form-select black_input" name="categories_id[]" id="categories"
-                                        required>
+                                    <select class="form-control form-select black_input" name="categories_id[]"
+                                        id="categories" required>
                                         <option selected disabled>Select a Category</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                            <option value="{{ $category->id }}"
+                                                {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                                {{ $category->title }}</option>
                                         @endforeach
                                     </select>
-                                    @error('category_id')
+                                    @error('categories_id')
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -73,8 +77,8 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text"
                                         style="background-color: #393a3c; color:white; border: 1px solid #393a3c;">PKR</span>
-                                    <input type="text" class="form-control black_input" name="amount" aria-label="PKR"
-                                        required>
+                                    <input type="number" class="form-control black_input" name="amount" aria-label="PKR"
+                                        value="{{ old('amount') }}" required>
                                     @error('amount')
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -91,16 +95,22 @@
                                 <div class="form-group">
                                     <label class="black_label">Starting Day of the week<span
                                             class="text-danger ">*</span></label>
-                                    <select class="form-control form-select black_input" name="start_day"
-                                        id="starting_day">
+                                    <select class="form-control form-select black_input" name="start_day" id="starting_day">
                                         <option selected disabled>Select A Day</option>
-                                        <option value="monday">Monday</option>
-                                        <option value="tuesday">Tuesday</option>
-                                        <option value="wednessday">Wednessday</option>
-                                        <option value="thursday">Thursday</option>
-                                        <option value="friday">Friday</option>
-                                        <option value="saturday">Saturday</option>
-                                        <option value="sunday">Sunday</option>
+                                        <option value="monday" {{ old('start_day') == 'monday' ? 'selected' : '' }}>Monday
+                                        </option>
+                                        <option value="tuesday" {{ old('start_day') == 'tuesday' ? 'selected' : '' }}>
+                                            Tuesday</option>
+                                        <option value="wednessday" {{ old('start_day') == 'wednesday' ? 'selected' : '' }}>
+                                            Wednessday</option>
+                                        <option value="thursday" {{ old('start_day') == 'thursday' ? 'selected' : '' }}>
+                                            Thursday</option>
+                                        <option value="friday" {{ old('start_day') == 'friday' ? 'selected' : '' }}>Friday
+                                        </option>
+                                        <option value="saturday" {{ old('start_day') == 'saturday' ? 'selected' : '' }}>
+                                            Saturday</option>
+                                        <option value="sunday" {{ old('start_day') == 'sunday' ? 'selected' : '' }}>Sunday
+                                        </option>
                                     </select>
                                     @error('starting_day')
                                         <span class="text-danger" role="alert">
@@ -115,13 +125,20 @@
                                             class="text-danger ">*</span></label>
                                     <select class="form-control form-select black_input" name="end_day" id="end_day">
                                         <option selected disabled>Select A Day</option>
-                                        <option value="monday">Monday</option>
-                                        <option value="tuesday">Tuesday</option>
-                                        <option value="wednessday">Wednessday</option>
-                                        <option value="thursday">Thursday</option>
-                                        <option value="friday">Friday</option>
-                                        <option value="saturday">Saturday</option>
-                                        <option value="sunday">Sunday</option>
+                                        <option value="monday" {{ old('end_day') == 'monday' ? 'selected' : '' }}>Monday
+                                        </option>
+                                        <option value="tuesday" {{ old('end_day') == 'tuesday' ? 'selected' : '' }}>
+                                            Tuesday</option>
+                                        <option value="wednessday" {{ old('end_day') == 'wednesday' ? 'selected' : '' }}>
+                                            Wednessday</option>
+                                        <option value="thursday" {{ old('end_day') == 'thursday' ? 'selected' : '' }}>
+                                            Thursday</option>
+                                        <option value="friday" {{ old('end_day') == 'friday' ? 'selected' : '' }}>Friday
+                                        </option>
+                                        <option value="saturday" {{ old('end_day') == 'saturday' ? 'selected' : '' }}>
+                                            Saturday</option>
+                                        <option value="sunday" {{ old('end_day') == 'sunday' ? 'selected' : '' }}>Sunday
+                                        </option>
                                     </select>
                                     @error('ending_day')
                                         <span class="text-danger" role="alert">
@@ -133,7 +150,8 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="black_label">Start Time<span class="text-danger ">*</span></label>
-                                    <input class="form-control black_input" type="text" name="start_time" required>
+                                    <input class="form-control black_input" type="time" name="start_time"
+                                        value="{{ old('start_time') }}" required>
                                     @error('start_time')
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -144,7 +162,8 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="black_label">End Time<span class="text-danger ">*</span></label>
-                                    <input class="form-control black_input" type="text" name="end_time" required>
+                                    <input class="form-control black_input" type="time" name="end_time" required
+                                        value="{{ old('end_time') }}">
                                     @error('end_time')
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -172,13 +191,20 @@
                                 <div class="form-group">
                                     <label class="black_label">Select Day<span class="text-danger ">*</span></label>
                                     <select class="form-control form-select black_input" name="extra_day">
-                                        <option value="monday">Monday</option>
-                                        <option value="tuesday">Tuesday</option>
-                                        <option value="wednessday">Wednessday</option>
-                                        <option value="thursday">Thursday</option>
-                                        <option value="friday">Friday</option>
-                                        <option value="saturday">Saturday</option>
-                                        <option value="sunday">Sunday</option>
+                                        <option value="monday" {{ old('extra_day') == 'monday' ? 'selected' : '' }}>Monday
+                                        </option>
+                                        <option value="tuesday" {{ old('extra_day') == 'tuesday' ? 'selected' : '' }}>
+                                            Tuesday</option>
+                                        <option value="wednessday"
+                                            {{ old('extra_day') == 'wednesday' ? 'selected' : '' }}>Wednessday</option>
+                                        <option value="thursday" {{ old('extra_day') == 'thursday' ? 'selected' : '' }}>
+                                            Thursday</option>
+                                        <option value="friday" {{ old('extra_day') == 'friday' ? 'selected' : '' }}>Friday
+                                        </option>
+                                        <option value="saturday" {{ old('extra_day') == 'saturday' ? 'selected' : '' }}>
+                                            Saturday</option>
+                                        <option value="sunday" {{ old('extra_day') == 'sunday' ? 'selected' : '' }}>Sunday
+                                        </option>
                                     </select>
                                     @error('extra_day')
                                         <span class="text-danger" role="alert">
@@ -190,8 +216,8 @@
                             <div class="col-lg-6" id="extra_day_start_time_div">
                                 <div class="form-group">
                                     <label class="black_label">Start Time<span class="text-danger ">*</span></label>
-                                    <input class="form-control black_input" type="text" name="extra_day_start_time"
-                                        id="extra_day_start_time">
+                                    <input class="form-control black_input" type="time" name="extra_day_start_time"
+                                        id="extra_day_start_time" value="{{ old('extra_day_start_time') }}">
                                     @error('extra_day_start_time')
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -202,8 +228,8 @@
                             <div class="col-lg-6" id="extra_day_end_time_div">
                                 <div class="form-group">
                                     <label class="black_label">End Time<span class="text-danger ">*</span></label>
-                                    <input class="form-control black_input" type="text" name="extra_day_end_time"
-                                        id="extra_day_end_time">
+                                    <input class="form-control black_input" type="time" name="extra_day_end_time"
+                                        id="extra_day_end_time" value="{{ old('extra_day_end_time') }}">
                                     @error('extra_day_end_time')
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -217,7 +243,7 @@
                         <h3 class="heading-2">Cover Image</h3>
                         <div class="col-8 mb-4">
                             <label for="image" class="black_label"><b>Upload Your Service Cover</b></label>
-                            <input type="file" name="image" class="dropify"
+                            <input type="file" name="image" class="dropify" value="{{ old('image') }}"
                                 data-default-file="{{ asset('front') }}/assets/img/category/Category1.jpg">
                         </div>
                     </div>

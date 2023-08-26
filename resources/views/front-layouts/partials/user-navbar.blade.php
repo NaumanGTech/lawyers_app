@@ -9,7 +9,7 @@
                 </span>
             </a>
             <a href="{{ route('customer.dashboard') }}" class="navbar-brand logo">
-                <img src="{{ asset('front') }}/assets/img/logo.png" class="img-fluid" alt="Logo">
+                Logo Here
             </a>
             <a href="{{ route('customer.dashboard') }}" class="navbar-brand logo-small">
                 <img src="{{ asset('front') }}/assets/img/logo-icon.png" class="img-fluid" alt="Logo">

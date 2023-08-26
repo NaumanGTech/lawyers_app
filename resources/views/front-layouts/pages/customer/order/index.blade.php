@@ -1,6 +1,6 @@
 @extends('front-layouts.master-user-layout')
 @section('content')
-   
+
 
 
     <div class="col-xl-9 col-md-8">
@@ -62,8 +62,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-3">
-                                    <div class="form-group">
+                                <div class="col-sm-6 col-md-3 d-flex align-items-end">
+                                    <div class="form-group w-100">
                                         <button class="btn btn-primary btn-block w-100" type="submit">Submit</button>
                                     </div>
                                 </div>
@@ -78,10 +78,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-hover table-center mb-0 datatable">
+                                    <table class="table table-hover table-center table-responsive mb-0 datatable">
                                         <thead>
                                             <tr>
-
                                                 <th>id</th>
                                                 <th>Lawyer id</th>
                                                 <th>Lawyer Location</th>

@@ -118,6 +118,12 @@ a:focus {
 button:focus {
     outline: 0;
 }
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    /* filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%); */
+    filter: invert(100%);
+}
+
 .mh-auto {
     min-height: auto;
 }

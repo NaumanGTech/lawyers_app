@@ -21,13 +21,13 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-center">
+                        <table class="table table-center" id="dataTableId">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Image</th>
                                     <th>Title</th>
-                                    <th>Categories</th>
+                                    <th>Category</th>
                                     <th>Amount</th>
                                     <th>Location</th>
                                     <th>Starting Day</th>
@@ -38,15 +38,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $row)
+                                @foreach ($data as $key => $row)
                                     <tr>
-                                        <td>{{ $row->id }}</td>
+                                        <td>{{ $key + 1 }}</td>
                                         <td style="width: 10%;"><img src="{{ $row->cover_image }}" class="w-100"
                                                 alt="Service Image"></td>
                                         <td>{{ $row->title }}</td>
                                         <td>
                                             @foreach ($row->categories as $category)
-                                                <p>{{$category->title}}</p>
+                                                <p>{{ $category->title }}</p>
                                             @endforeach
                                         </td>
                                         <td>{{ $row->amount }}</td>

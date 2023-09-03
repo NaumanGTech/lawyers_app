@@ -33,9 +33,9 @@ class FrontController extends Controller
         return view('front-layouts.pages.lawyers', get_defined_vars());
     }
 
-    public function lawyers_online($id)
+    public function lawyers_online($filter)
     {
-        $lawyersByCategories = User::where('role', 'lawyer')->where('category_id', $id)->with('category')->get();
+        $lawyersByCategories = User::where('role', 'lawyer')->with('category')->get();
         $categories = Category::get();
         return view('front-layouts.pages.online_lawyers', get_defined_vars());
     }

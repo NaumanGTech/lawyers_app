@@ -105,16 +105,11 @@
                                             <div class="cate-title online">
                                                 <h3>{{ $lawyersByCategory->category->title }}</h3>
                                                 <div class="lawyerDetails">
+                                                    <h6 class="text-light text-center">Advocate</h6>
                                                     <p class="mb-1">{{ $lawyersByCategory->name }}</p>
-                                                    <p class="mb-1">Masters In {{ $lawyersByCategory->degree }}</p>
-                                                    <ul>
-                                                        <li style="color: white">Certificate 1</li>
-                                                        <li style="color: white">Certificate 2</li>
-                                                        <li style="color: white">Certificate 3</li>
-                                                    </ul>
                                                 </div>
                                                 <div class="w-100 d-flex justify-content-between">
-                                                    <div class="price text-light w-100">
+                                                    <div class="price text-light w-25">
                                                         <span>Rs 2000</span>
                                                     </div>
                                                     <div class="OnlineLawyersRatings text-end">
@@ -154,13 +149,13 @@
                 var sortBy = $('#search_form select[name="sort_by"]').val();
                 var category = $('#search_form select[name="category"]').val();
                 var location = $('#search_form input[name="location"]').val();
-    
+
                 var url = '{{ route('advance.search') }}' + '?keyword=' + keyword + '&sort_by=' + sortBy + '&category=' + category + '&location=' + location;
-    
+
                 // Redirect to the search URL
                 window.location.href = url;
             });
         });
     </script>
-    
+
 @endsection

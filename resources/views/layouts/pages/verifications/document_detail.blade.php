@@ -25,7 +25,7 @@
                 <div class="col-3">
                     <label>Profile Picture</label><br>
                     <a href="{{ $lawyer->image }}" data-lightbox="image-gallery">
-                        <img src="{{ $lawyer->image }}" alt="Profile Pic">
+                        <img class="img-fluid" src="{{ $lawyer->image }}" alt="Profile Pic">
                     </a>
                 </div>
             </div>

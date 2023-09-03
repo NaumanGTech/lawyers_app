@@ -6,7 +6,7 @@ return [
     | Messenger display name
     |-------------------------------------
     */
-    'name' => env('CHATIFY_NAME', 'Chatify Messenger'),
+    'name' => env('CHATIFY_NAME', 'Laywers Legal App'),
 
     /*
     |-------------------------------------
@@ -14,7 +14,7 @@ return [
     | files and derived images by default.
     |-------------------------------------
     */
-    'storage_disk_name' => env('CHATIFY_STORAGE_DISK', 'public'),
+    'storage_disk_name' => env('CHATIFY_STORAGE_DISK', 'public/chat'),
 
     /*
     |-------------------------------------

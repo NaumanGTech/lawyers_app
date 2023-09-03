@@ -83,11 +83,7 @@
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                 @endforeach
-
-
-
                                             </select>
-                                           
                                         </div>
                                     </div>
                                     <div class="search-input">
@@ -95,18 +91,6 @@
                                         </i>
                                         <div class="form-group mb-0">
                                             {{-- <input type="text" class="form-control" placeholder="Your Location"> --}}
-<<<<<<< Updated upstream
-                                                <select name="" id="" class="form-control mt-2 text-center"
-                                                    style="border: #f6f6f6">
-                                                    <option value="">Select Location</option>
-                                                    @foreach ($cities->unique('city') as $city)
-                                                        <option value="{{ $city->city }}">{{ $city->city }}</option>
-                                                    @endforeach
-                                                </select>
-                                                <a class="current-loc-icon current_location" href="javascript:void(0);">
-                                                    <i class="fas fa-crosshairs"></i>
-                                                </a>
-=======
                                             <select name="select_location " id=""
                                                 class="form-control mt-2 text-center" style="border: #f6f6f6">
                                                 <option value="">Select Location</option>
@@ -117,7 +101,6 @@
                                             <a class="current-loc-icon current_location" href="javascript:void(0);">
                                                 <i class="fas fa-crosshairs"></i>
                                             </a>
->>>>>>> Stashed changes
                                         </div>
 
                                     </div>
@@ -317,11 +300,13 @@
     <!-- /How It Works -->
     <script>
         /* When the user clicks on the button,
-<<<<<<< Updated upstream
-                                    toggle between hiding and showing the dropdown content */
-=======
+    <<<<<<< Updated upstream
                                         toggle between hiding and showing the dropdown content */
->>>>>>> Stashed changes
+        ===
+        === =
+        toggle between hiding and showing the dropdown content * / >>>
+            >>> > Stashed changes
+
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
         }

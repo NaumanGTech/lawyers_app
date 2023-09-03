@@ -29,7 +29,7 @@ use App\Http\Controllers\Lawyer\ServiceController;
 use App\Http\Controllers\PayMobController;
 use App\Http\Controllers\Lawyer\BookingController;
 use App\Http\Controllers\Lawyer\LawyerPaymentController;
-// ==============> Lawyers Controller Endss
+// ==============> Lawyers Controller Ends
 
 use App\Http\Controllers\PusherController;
 use App\Http\Controllers\StripePaymentController;

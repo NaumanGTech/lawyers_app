@@ -61,9 +61,9 @@ Route::get('/lawyers/online/{filter}', [FrontController::class, 'lawyers_online'
 
 Route::get('/contact-us', [FrontController::class, 'contact_us'])->name('contact.us');
 Route::post('/contact-us/submit', [FrontController::class, 'support_msg'])->name('contact.us.submit');
-Route::get('/chat', [PusherController::class, 'index'])->name('chat');
-Route::post('/broadcast', [PusherController::class, 'broadcast'])->name('broadcast');
-Route::post('/receive', [PusherController::class, 'receive'])->name('receive');
+// Route::get('/chat', [PusherController::class, 'index'])->name('chat');
+// Route::post('/broadcast', [PusherController::class, 'broadcast'])->name('broadcast');
+// Route::post('/receive', [PusherController::class, 'receive'])->name('receive');
 
 Route::get('image/update', function () {
     return view('front-layouts.pages.lawyer.image-update');

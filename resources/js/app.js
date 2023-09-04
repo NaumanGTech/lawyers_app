@@ -6,3 +6,5 @@ const app = createApp({});
 
 app.component('chat', chat);
 app.mount('#app');
+
+Vue.component("agora-chat", require("./components/AgoraChat.vue").default);

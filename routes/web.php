@@ -5,6 +5,7 @@ use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\VerificationController;
+use App\Http\Controllers\AgoraVideoController;
 use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\FrontController;
@@ -180,6 +181,16 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('payTest/page',[PayMobController::class,'paymobtestpage'])->name('paymob.test.page');
+
+// Video Calling with Agora
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/agora-chat', [AgoraVideoController::class, 'index'])->name('agora.index');
+    Route::post('/agora/token',[AgoraVideoController::class, 'token'] );
+    Route::post('/agora/call-user',[AgoraVideoController::class, 'callUser'] );
+
+
+    Route::get('/agora-chat-new', [AgoraVideoController::class, 'indexNew'])->name('agora.index.new');
+});
 
 // Route::group(['middleware' => 'lawyer'], function () {
 //     Route::group(['prefix' => 'lawyer'], function () {

@@ -67,7 +67,7 @@ button{
 </style>
 <button class="btn btn-primary" id="join-btn">Join Meeting</button>
 
-@if ($meettingLink == '1122')
+@if ($checkMeeting->created_by == auth()->user()->id || $checkMeeting->meeting_with == auth()->user()->id )
 <div id="stream-wrapper">
     <div id="video-streams"></div>
 

@@ -95,18 +95,6 @@
                                         </i>
                                         <div class="form-group mb-0">
                                             {{-- <input type="text" class="form-control" placeholder="Your Location"> --}}
-<<<<<<< Updated upstream
-                                                <select name="" id="" class="form-control mt-2 text-center"
-                                                    style="border: #f6f6f6">
-                                                    <option value="">Select Location</option>
-                                                    @foreach ($cities->unique('city') as $city)
-                                                        <option value="{{ $city->city }}">{{ $city->city }}</option>
-                                                    @endforeach
-                                                </select>
-                                                <a class="current-loc-icon current_location" href="javascript:void(0);">
-                                                    <i class="fas fa-crosshairs"></i>
-                                                </a>
-=======
                                             <select name="select_location " id=""
                                                 class="form-control mt-2 text-center" style="border: #f6f6f6">
                                                 <option value="">Select Location</option>
@@ -117,7 +105,6 @@
                                             <a class="current-loc-icon current_location" href="javascript:void(0);">
                                                 <i class="fas fa-crosshairs"></i>
                                             </a>
->>>>>>> Stashed changes
                                         </div>
 
                                     </div>

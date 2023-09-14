@@ -1,6 +1,6 @@
 const APP_ID = "e05d868380124ccb830ee97865b3a27e"
-const TOKEN = "007eJxTYBD7w6CYPCVppfJNp3WbAh/lLvV7/2cf33TfFR+dBfWs5wkpMKQamKZYmFkYWxgYGpkkJydZGBukplqaW5iZJhknGpmnbvrzJaUhkJHhpDAnCyMDBIL4XAw5ieWVqUW6iQUFDAwA5yghVQ=="
-const CHANNEL = "lawyer-app"
+const TOKEN = "007eJxTYFDJWfR8TUjph+Kqq4lRCw81huc+z7vhwnl73/l1TiKb/ucqMKQamKZYmFkYWxgYGpkkJydZGBukplqaW5iZJhknGpmnCukxpTYEMjJIvuJhYmSAQBCfgyEvtaLENzW1hIEBADD/IQQ="
+const CHANNEL = "nextMeet"
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 

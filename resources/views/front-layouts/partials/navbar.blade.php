@@ -66,7 +66,7 @@
                     <a href="{{ route('lawyers.online', ['filter' => 'all']) }}">Consult Online<i
                             class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
-                        <li><a href="#">Chat</a></li>
+                        <li><a href="{{route('chat')}}">Chat</a></li>
                         <li><a href="{{ route('lawyers.online', ['filter' => 'online']) }}">Find Online Lawyers</a>
                         </li>
                     </ul>

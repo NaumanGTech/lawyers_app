@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,6 +28,7 @@ class HomeController extends Controller
     }
 
     public function chat(){
-        return view('front-layouts.pages.chat.chat');
+        $users = User::where('role', 'lawyer')->get();
+        return view('front-layouts.pages.chat.chat', get_defined_vars());
     }
 }

@@ -83,11 +83,7 @@
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                 @endforeach
-
-
-
                                             </select>
-                                           
                                         </div>
                                     </div>
                                     <div class="search-input">
@@ -304,11 +300,13 @@
     <!-- /How It Works -->
     <script>
         /* When the user clicks on the button,
-<<<<<<< Updated upstream
-                                    toggle between hiding and showing the dropdown content */
-=======
+    <<<<<<< Updated upstream
                                         toggle between hiding and showing the dropdown content */
->>>>>>> Stashed changes
+        ===
+        === =
+        toggle between hiding and showing the dropdown content * / >>>
+            >>> > Stashed changes
+
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
         }
